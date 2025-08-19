@@ -46,12 +46,15 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(gradient: AppColors.primaryGradient),
+        ),
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset('assets/icon/chef_pro.png', width: 32, height: 32),
-            const SizedBox(width: 12),
-            const Text('Pro Chef'),
+            Image.asset('assets/icon/chef_pro.png', width: 60, height: 60),
+            // const SizedBox(width: 12),
+            //  const Text('Pro Chef'),
           ],
         ),
         backgroundColor: AppColors.appBarBackground,

@@ -11,8 +11,9 @@ class AppColors {
 
   // Gradient Colors
   static const LinearGradient primaryGradient = LinearGradient(
-    begin: Alignment.topLeft,
-    end: Alignment.bottomRight,
+    stops: [0.40, 0.60],
+    begin: Alignment.centerLeft,
+    end: Alignment.centerRight,
     colors: [mintGreen, warmOrange],
   );
 
