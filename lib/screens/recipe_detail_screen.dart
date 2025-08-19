@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../constants/app_colors.dart';
+import '../constants/app_text_theme.dart';
 import '../models/recipe.dart';
 
 class RecipeDetailScreen extends StatelessWidget {
@@ -64,15 +65,17 @@ class RecipeDetailScreen extends StatelessWidget {
                             children: [
                               Text(
                                 recipe.name,
-                                style: Theme.of(context).textTheme.headlineSmall
-                                    ?.copyWith(fontWeight: FontWeight.bold),
+                                style: AppTextTheme.headlineSmall.copyWith(
+                                  fontWeight: FontWeight.bold,
+                                ),
                                 maxLines: 2,
                               ),
                               const SizedBox(height: 4),
                               Text(
                                 '${recipe.steps.length} steps',
-                                style: Theme.of(context).textTheme.bodyMedium
-                                    ?.copyWith(color: AppColors.textSecondary),
+                                style: AppTextTheme.bodyMedium.copyWith(
+                                  color: AppColors.textSecondary,
+                                ),
                               ),
                             ],
                           ),
@@ -82,14 +85,14 @@ class RecipeDetailScreen extends StatelessWidget {
                     const SizedBox(height: 16),
                     Text(
                       'Description',
-                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                      style: AppTextTheme.titleMedium.copyWith(
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     const SizedBox(height: 8),
                     Text(
                       recipe.description,
-                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                      style: AppTextTheme.bodyLarge.copyWith(
                         color: AppColors.textSecondary,
                         height: 1.5,
                       ),
@@ -103,9 +106,9 @@ class RecipeDetailScreen extends StatelessWidget {
             // Steps Section
             Text(
               'Instructions',
-              style: Theme.of(
-                context,
-              ).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold),
+              style: AppTextTheme.headlineSmall.copyWith(
+                fontWeight: FontWeight.bold,
+              ),
             ),
             const SizedBox(height: 16),
 
@@ -137,10 +140,9 @@ class RecipeDetailScreen extends StatelessWidget {
                           child: Center(
                             child: Text(
                               '${index + 1}',
-                              style: const TextStyle(
-                                color: Colors.white,
+                              style: AppTextTheme.labelLarge.copyWith(
+                                color: AppColors.pureWhite,
                                 fontWeight: FontWeight.bold,
-                                fontSize: 16,
                               ),
                             ),
                           ),
@@ -149,9 +151,7 @@ class RecipeDetailScreen extends StatelessWidget {
                         Expanded(
                           child: Text(
                             step,
-                            style: Theme.of(
-                              context,
-                            ).textTheme.bodyLarge?.copyWith(
+                            style: AppTextTheme.bodyLarge.copyWith(
                               height: 1.5,
                               color: AppColors.textPrimary,
                             ),

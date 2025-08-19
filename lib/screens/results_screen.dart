@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../constants/app_colors.dart';
+import '../constants/app_text_theme.dart';
 import '../controllers/recipe_controller.dart';
 import '../models/recipe.dart';
 import 'recipe_detail_screen.dart';
@@ -31,20 +32,28 @@ class ResultsScreen extends StatelessWidget {
       ),
       body: Obx(() {
         if (controller.recipes.isEmpty) {
-          return const Center(
+          return Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(Icons.search_off, size: 64, color: AppColors.iconLight),
-                SizedBox(height: 16),
+                const Icon(
+                  Icons.search_off,
+                  size: 64,
+                  color: AppColors.iconLight,
+                ),
+                const SizedBox(height: 16),
                 Text(
                   'No recipes found',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  style: AppTextTheme.headlineSmall.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-                SizedBox(height: 8),
+                const SizedBox(height: 8),
                 Text(
                   'Try different ingredients or filters',
-                  style: TextStyle(color: AppColors.textSecondary),
+                  style: AppTextTheme.bodyMedium.copyWith(
+                    color: AppColors.textSecondary,
+                  ),
                 ),
               ],
             ),
@@ -106,16 +115,18 @@ class RecipeCard extends StatelessWidget {
                       children: [
                         Text(
                           recipe.name,
-                          style: Theme.of(context).textTheme.titleLarge
-                              ?.copyWith(fontWeight: FontWeight.bold),
+                          style: AppTextTheme.cardTitle.copyWith(
+                            fontWeight: FontWeight.bold,
+                          ),
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                         ),
                         const SizedBox(height: 4),
                         Text(
                           '${recipe.steps.length} steps',
-                          style: Theme.of(context).textTheme.bodySmall
-                              ?.copyWith(color: AppColors.textSecondary),
+                          style: AppTextTheme.cardSubtitle.copyWith(
+                            color: AppColors.textSecondary,
+                          ),
                         ),
                       ],
                     ),
@@ -130,7 +141,7 @@ class RecipeCard extends StatelessWidget {
               const SizedBox(height: 12),
               Text(
                 recipe.description,
-                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                style: AppTextTheme.bodyMedium.copyWith(
                   color: AppColors.textSecondary,
                 ),
                 maxLines: 3,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../constants/app_colors.dart';
+import '../constants/app_text_theme.dart';
 import '../constants/splash_constants.dart';
 import 'home_screen.dart';
 
@@ -317,11 +318,8 @@ class _AnimatedTitle extends StatelessWidget {
                           AppColors.primaryGradient.createShader(bounds),
                   child: Text(
                     SplashConstants.appTitle,
-                    style: TextStyle(
-                      fontSize: SplashConstants.titleFontSize,
-                      fontWeight: FontWeight.bold,
+                    style: AppTextTheme.splashTitle.copyWith(
                       color: AppColors.pureWhite,
-                      letterSpacing: SplashConstants.titleLetterSpacing,
                       shadows: [
                         Shadow(
                           color: AppColors.textPrimary.withValues(
@@ -356,11 +354,8 @@ class _AnimatedTitle extends StatelessWidget {
                   ),
                   child: Text(
                     SplashConstants.appSubtitle,
-                    style: TextStyle(
-                      fontSize: SplashConstants.subtitleFontSize,
+                    style: AppTextTheme.splashSubtitle.copyWith(
                       color: AppColors.textSecondary,
-                      fontWeight: FontWeight.w600,
-                      letterSpacing: SplashConstants.subtitleLetterSpacing,
                     ),
                   ),
                 ),
@@ -391,20 +386,15 @@ class _LoadingSection extends StatelessWidget {
               const SizedBox(height: SplashConstants.loadingSpacing),
               Text(
                 SplashConstants.loadingText,
-                style: TextStyle(
-                  fontSize: SplashConstants.loadingFontSize,
+                style: AppTextTheme.loadingText.copyWith(
                   color: AppColors.textSecondary,
-                  fontWeight: FontWeight.w500,
-                  letterSpacing: SplashConstants.loadingLetterSpacing,
                 ),
               ),
               const SizedBox(height: 8),
               Text(
                 SplashConstants.loadingSubText,
-                style: TextStyle(
-                  fontSize: SplashConstants.loadingSubFontSize,
+                style: AppTextTheme.loadingSubText.copyWith(
                   color: AppColors.textLight,
-                  fontWeight: FontWeight.w400,
                 ),
               ),
             ],

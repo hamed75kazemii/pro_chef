@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../constants/app_colors.dart';
+import '../constants/app_text_theme.dart';
 import '../controllers/recipe_controller.dart';
 import 'results_screen.dart';
 
@@ -92,14 +93,15 @@ class _HomeScreenState extends State<HomeScreen> {
                       const SizedBox(height: 16),
                       Text(
                         'What ingredients do you have?',
-                        style: Theme.of(context).textTheme.headlineSmall
-                            ?.copyWith(fontWeight: FontWeight.bold),
+                        style: AppTextTheme.headlineSmall.copyWith(
+                          fontWeight: FontWeight.bold,
+                        ),
                         textAlign: TextAlign.center,
                       ),
                       const SizedBox(height: 8),
                       Text(
                         'Enter your available ingredients and let AI create delicious recipes for you!',
-                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                        style: AppTextTheme.bodyMedium.copyWith(
                           color: AppColors.textSecondary,
                         ),
                         textAlign: TextAlign.center,
@@ -138,8 +140,9 @@ class _HomeScreenState extends State<HomeScreen> {
                           const SizedBox(width: 12),
                           Text(
                             'Ingredients',
-                            style: Theme.of(context).textTheme.titleMedium
-                                ?.copyWith(fontWeight: FontWeight.bold),
+                            style: AppTextTheme.titleMedium.copyWith(
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ],
                       ),
@@ -163,7 +166,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       const SizedBox(height: 8),
                       Text(
                         'Separate ingredients with commas',
-                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                        style: AppTextTheme.bodySmall.copyWith(
                           color: AppColors.textSecondary,
                         ),
                       ),
@@ -202,9 +205,10 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                           const SizedBox(width: 12),
                           Text(
-                            'Dietary Preferences (Optional)',
-                            style: Theme.of(context).textTheme.titleMedium
-                                ?.copyWith(fontWeight: FontWeight.bold),
+                            'Dietary Preferences',
+                            style: AppTextTheme.titleMedium.copyWith(
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ],
                       ),
@@ -274,12 +278,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                     selected.isEmpty
                                         ? 'Select dietary preference'
                                         : selected,
-                                    style: TextStyle(
+                                    style: AppTextTheme.bodyMedium.copyWith(
                                       color:
                                           selected.isEmpty
                                               ? AppColors.textLight
                                               : AppColors.textPrimary,
-                                      fontSize: 16,
                                     ),
                                   ),
                                 ),
@@ -315,10 +318,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     controller.isLoading.value
                         ? 'Generating Recipes...'
                         : 'Suggest Recipes',
-                    style: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: AppTextTheme.buttonText,
                   ),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.buttonPrimary,
@@ -356,7 +356,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               Expanded(
                                 child: Text(
                                   controller.errorMessage.value,
-                                  style: const TextStyle(
+                                  style: AppTextTheme.error.copyWith(
                                     color: AppColors.error,
                                   ),
                                 ),

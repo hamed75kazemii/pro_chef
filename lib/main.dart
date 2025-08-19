@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'constants/app_colors.dart';
+import 'constants/app_text_theme.dart';
 import 'screens/splash_screen.dart';
 
 void main() {
@@ -21,6 +23,7 @@ class MyApp extends StatelessWidget {
           seedColor: AppColors.mintGreen,
           brightness: Brightness.light,
         ),
+        fontFamily: GoogleFonts.poppins().fontFamily,
         scaffoldBackgroundColor: AppColors.backgroundLight,
         cardTheme: CardTheme(
           elevation: 4,
@@ -64,17 +67,7 @@ class MyApp extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
-        textTheme: const TextTheme(
-          headlineLarge: TextStyle(color: AppColors.textPrimary),
-          headlineMedium: TextStyle(color: AppColors.textPrimary),
-          headlineSmall: TextStyle(color: AppColors.textPrimary),
-          titleLarge: TextStyle(color: AppColors.textPrimary),
-          titleMedium: TextStyle(color: AppColors.textPrimary),
-          titleSmall: TextStyle(color: AppColors.textPrimary),
-          bodyLarge: TextStyle(color: AppColors.textPrimary),
-          bodyMedium: TextStyle(color: AppColors.textSecondary),
-          bodySmall: TextStyle(color: AppColors.textLight),
-        ),
+        textTheme: AppTextTheme.textTheme,
       ),
       home: const SplashScreen(),
     );
