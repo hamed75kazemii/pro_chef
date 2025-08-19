@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../constants/app_colors.dart';
 import '../controllers/recipe_controller.dart';
 import 'results_screen.dart';
 
@@ -45,14 +46,15 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Row(
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(Icons.restaurant_menu, color: Colors.orange),
-            SizedBox(width: 8),
-            Text('AI Recipe Generator'),
+            Image.asset('assets/icon/chef_pro.png', width: 32, height: 32),
+            const SizedBox(width: 12),
+            const Text('Pro Chef'),
           ],
         ),
-        backgroundColor: Theme.of(context).colorScheme.primaryContainer,
+        backgroundColor: AppColors.appBarBackground,
         elevation: 0,
       ),
       body: SingleChildScrollView(
@@ -71,10 +73,18 @@ class _HomeScreenState extends State<HomeScreen> {
                   padding: const EdgeInsets.all(20.0),
                   child: Column(
                     children: [
-                      const Icon(
-                        Icons.auto_awesome,
-                        size: 48,
-                        color: Colors.orange,
+                      Container(
+                        width: 80,
+                        height: 80,
+                        decoration: BoxDecoration(
+                          gradient: AppColors.primaryGradient,
+                          borderRadius: BorderRadius.circular(40),
+                        ),
+                        child: const Icon(
+                          Icons.auto_awesome,
+                          size: 40,
+                          color: AppColors.pureWhite,
+                        ),
                       ),
                       const SizedBox(height: 16),
                       Text(
@@ -87,7 +97,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       Text(
                         'Enter your available ingredients and let AI create delicious recipes for you!',
                         style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          color: Colors.grey[600],
+                          color: AppColors.textSecondary,
                         ),
                         textAlign: TextAlign.center,
                       ),
@@ -110,11 +120,19 @@ class _HomeScreenState extends State<HomeScreen> {
                     children: [
                       Row(
                         children: [
-                          const Icon(
-                            Icons.shopping_basket,
-                            color: Colors.green,
+                          Container(
+                            padding: const EdgeInsets.all(8),
+                            decoration: BoxDecoration(
+                              color: AppColors.mintGreen.withValues(alpha: 0.1),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            child: const Icon(
+                              Icons.shopping_basket,
+                              color: AppColors.mintGreen,
+                              size: 24,
+                            ),
                           ),
-                          const SizedBox(width: 8),
+                          const SizedBox(width: 12),
                           Text(
                             'Ingredients',
                             style: Theme.of(context).textTheme.titleMedium
@@ -143,7 +161,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       Text(
                         'Separate ingredients with commas',
                         style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                          color: Colors.grey[600],
+                          color: AppColors.textSecondary,
                         ),
                       ),
                     ],
@@ -165,8 +183,21 @@ class _HomeScreenState extends State<HomeScreen> {
                     children: [
                       Row(
                         children: [
-                          const Icon(Icons.filter_list, color: Colors.blue),
-                          const SizedBox(width: 8),
+                          Container(
+                            padding: const EdgeInsets.all(8),
+                            decoration: BoxDecoration(
+                              color: AppColors.warmOrange.withValues(
+                                alpha: 0.1,
+                              ),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            child: const Icon(
+                              Icons.filter_list,
+                              color: AppColors.warmOrange,
+                              size: 24,
+                            ),
+                          ),
+                          const SizedBox(width: 12),
                           Text(
                             'Dietary Preferences (Optional)',
                             style: Theme.of(context).textTheme.titleMedium
@@ -224,15 +255,15 @@ class _HomeScreenState extends State<HomeScreen> {
                               vertical: 18,
                             ),
                             decoration: BoxDecoration(
-                              color: Colors.grey[50],
+                              color: AppColors.inputBackground,
                               borderRadius: BorderRadius.circular(8),
-                              border: Border.all(color: Colors.grey.shade300),
+                              border: Border.all(color: AppColors.inputBorder),
                             ),
                             child: Row(
                               children: [
                                 const Icon(
                                   Icons.restaurant,
-                                  color: Colors.grey,
+                                  color: AppColors.iconLight,
                                 ),
                                 const SizedBox(width: 12),
                                 Expanded(
@@ -243,15 +274,15 @@ class _HomeScreenState extends State<HomeScreen> {
                                     style: TextStyle(
                                       color:
                                           selected.isEmpty
-                                              ? Colors.grey[600]
-                                              : Colors.black,
+                                              ? AppColors.textLight
+                                              : AppColors.textPrimary,
                                       fontSize: 16,
                                     ),
                                   ),
                                 ),
                                 const Icon(
                                   Icons.arrow_drop_down,
-                                  color: Colors.grey,
+                                  color: AppColors.iconLight,
                                 ),
                               ],
                             ),
@@ -287,8 +318,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.orange,
-                    foregroundColor: Colors.white,
+                    backgroundColor: AppColors.buttonPrimary,
+                    foregroundColor: AppColors.buttonText,
                     padding: const EdgeInsets.symmetric(vertical: 16),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),
@@ -306,21 +337,25 @@ class _HomeScreenState extends State<HomeScreen> {
                         ? Container(
                           padding: const EdgeInsets.all(12),
                           decoration: BoxDecoration(
-                            color: Colors.red[50],
+                            color: AppColors.error.withValues(alpha: 0.1),
                             borderRadius: BorderRadius.circular(8),
-                            border: Border.all(color: Colors.red[200]!),
+                            border: Border.all(
+                              color: AppColors.error.withValues(alpha: 0.3),
+                            ),
                           ),
                           child: Row(
                             children: [
                               const Icon(
                                 Icons.error_outline,
-                                color: Colors.red,
+                                color: AppColors.error,
                               ),
                               const SizedBox(width: 8),
                               Expanded(
                                 child: Text(
                                   controller.errorMessage.value,
-                                  style: const TextStyle(color: Colors.red),
+                                  style: const TextStyle(
+                                    color: AppColors.error,
+                                  ),
                                 ),
                               ),
                             ],

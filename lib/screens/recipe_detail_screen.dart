@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../constants/app_colors.dart';
 import '../models/recipe.dart';
 
 class RecipeDetailScreen extends StatelessWidget {
@@ -11,17 +12,18 @@ class RecipeDetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Row(
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(Icons.restaurant_menu, color: Colors.orange),
-            SizedBox(width: 8),
-            Text('Recipe Details'),
+            Image.asset('assets/icon/chef_pro.png', width: 28, height: 28),
+            const SizedBox(width: 10),
+            const Text('Recipe Details'),
           ],
         ),
-        backgroundColor: Theme.of(context).colorScheme.primaryContainer,
+        backgroundColor: AppColors.appBarBackground,
         elevation: 0,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back, color: AppColors.appBarIcon),
           onPressed: () => Get.back(),
         ),
       ),
@@ -46,12 +48,12 @@ class RecipeDetailScreen extends StatelessWidget {
                         Container(
                           padding: const EdgeInsets.all(12),
                           decoration: BoxDecoration(
-                            color: Colors.orange.withValues(alpha: 0.1),
+                            gradient: AppColors.primaryGradient,
                             borderRadius: BorderRadius.circular(12),
                           ),
                           child: const Icon(
                             Icons.restaurant,
-                            color: Colors.orange,
+                            color: AppColors.pureWhite,
                             size: 32,
                           ),
                         ),
@@ -70,7 +72,7 @@ class RecipeDetailScreen extends StatelessWidget {
                               Text(
                                 '${recipe.steps.length} steps',
                                 style: Theme.of(context).textTheme.bodyMedium
-                                    ?.copyWith(color: Colors.grey[600]),
+                                    ?.copyWith(color: AppColors.textSecondary),
                               ),
                             ],
                           ),
@@ -88,7 +90,7 @@ class RecipeDetailScreen extends StatelessWidget {
                     Text(
                       recipe.description,
                       style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                        color: Colors.grey[700],
+                        color: AppColors.textSecondary,
                         height: 1.5,
                       ),
                     ),
@@ -129,7 +131,7 @@ class RecipeDetailScreen extends StatelessWidget {
                           width: 32,
                           height: 32,
                           decoration: BoxDecoration(
-                            color: Colors.orange,
+                            gradient: AppColors.primaryGradient,
                             borderRadius: BorderRadius.circular(16),
                           ),
                           child: Center(
@@ -149,7 +151,10 @@ class RecipeDetailScreen extends StatelessWidget {
                             step,
                             style: Theme.of(
                               context,
-                            ).textTheme.bodyLarge?.copyWith(height: 1.5),
+                            ).textTheme.bodyLarge?.copyWith(
+                              height: 1.5,
+                              color: AppColors.textPrimary,
+                            ),
                           ),
                         ),
                       ],
@@ -178,8 +183,8 @@ class RecipeDetailScreen extends StatelessWidget {
                     icon: const Icon(Icons.favorite_border),
                     label: const Text('Save Recipe'),
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.green,
-                      foregroundColor: Colors.white,
+                      backgroundColor: AppColors.success,
+                      foregroundColor: AppColors.pureWhite,
                       padding: const EdgeInsets.symmetric(vertical: 12),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8),
@@ -202,8 +207,8 @@ class RecipeDetailScreen extends StatelessWidget {
                     icon: const Icon(Icons.share),
                     label: const Text('Share'),
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.blue,
-                      foregroundColor: Colors.white,
+                      backgroundColor: AppColors.info,
+                      foregroundColor: AppColors.pureWhite,
                       padding: const EdgeInsets.symmetric(vertical: 12),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8),

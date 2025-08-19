@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../constants/app_colors.dart';
 import '../controllers/recipe_controller.dart';
 import '../models/recipe.dart';
 import 'recipe_detail_screen.dart';
@@ -13,17 +14,18 @@ class ResultsScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Row(
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(Icons.restaurant_menu, color: Colors.orange),
-            SizedBox(width: 8),
-            Text('Generated Recipes'),
+            Image.asset('assets/icon/chef_pro.png', width: 28, height: 28),
+            const SizedBox(width: 10),
+            const Text('Generated Recipes'),
           ],
         ),
-        backgroundColor: Theme.of(context).colorScheme.primaryContainer,
+        backgroundColor: AppColors.appBarBackground,
         elevation: 0,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back, color: AppColors.appBarIcon),
           onPressed: () => Get.back(),
         ),
       ),
@@ -33,7 +35,7 @@ class ResultsScreen extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(Icons.search_off, size: 64, color: Colors.grey),
+                Icon(Icons.search_off, size: 64, color: AppColors.iconLight),
                 SizedBox(height: 16),
                 Text(
                   'No recipes found',
@@ -42,7 +44,7 @@ class ResultsScreen extends StatelessWidget {
                 SizedBox(height: 8),
                 Text(
                   'Try different ingredients or filters',
-                  style: TextStyle(color: Colors.grey),
+                  style: TextStyle(color: AppColors.textSecondary),
                 ),
               ],
             ),
@@ -88,12 +90,12 @@ class RecipeCard extends StatelessWidget {
                   Container(
                     padding: const EdgeInsets.all(8),
                     decoration: BoxDecoration(
-                      color: Colors.orange.withValues(alpha: 0.1),
+                      gradient: AppColors.primaryGradient,
                       borderRadius: BorderRadius.circular(8),
                     ),
                     child: const Icon(
                       Icons.restaurant,
-                      color: Colors.orange,
+                      color: AppColors.pureWhite,
                       size: 24,
                     ),
                   ),
@@ -113,7 +115,7 @@ class RecipeCard extends StatelessWidget {
                         Text(
                           '${recipe.steps.length} steps',
                           style: Theme.of(context).textTheme.bodySmall
-                              ?.copyWith(color: Colors.grey[600]),
+                              ?.copyWith(color: AppColors.textSecondary),
                         ),
                       ],
                     ),
@@ -128,21 +130,21 @@ class RecipeCard extends StatelessWidget {
               const SizedBox(height: 12),
               Text(
                 recipe.description,
-                style: Theme.of(
-                  context,
-                ).textTheme.bodyMedium?.copyWith(color: Colors.grey[700]),
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                  color: AppColors.textSecondary,
+                ),
                 maxLines: 3,
                 overflow: TextOverflow.ellipsis,
               ),
               const SizedBox(height: 12),
               Row(
                 children: [
-                  Icon(Icons.timer, size: 16, color: Colors.grey[600]),
+                  Icon(Icons.timer, size: 16, color: AppColors.iconLight),
                   const SizedBox(width: 4),
                   Text(
                     'Tap to view full recipe',
                     style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                      color: Colors.orange,
+                      color: AppColors.warmOrange,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
