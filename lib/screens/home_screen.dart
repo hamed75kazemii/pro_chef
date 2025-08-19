@@ -53,12 +53,8 @@ class _HomeScreenState extends State<HomeScreen> {
         flexibleSpace: Container(
           decoration: const BoxDecoration(gradient: AppColors.primaryGradient),
         ),
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.asset('assets/icon/chef_pro.png', width: 60, height: 60),
-          ],
-        ),
+
+        title: Image.asset('assets/icon/chef_pro.png', width: 60, height: 60),
         actions: [
           // Settings Button
           IconButton(
@@ -114,6 +110,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         'what_ingredients_have'.tr,
                         style: AppTextTheme.headlineSmall.copyWith(
                           fontWeight: FontWeight.bold,
+                          color: AppColors.textSecondary,
                         ),
                         textAlign: TextAlign.center,
                       ),
@@ -160,6 +157,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           Text(
                             'ingredients'.tr,
                             style: AppTextTheme.titleMedium.copyWith(
+                              color: AppColors.textSecondary,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -183,7 +181,8 @@ class _HomeScreenState extends State<HomeScreen> {
                             borderRadius: BorderRadius.circular(8),
                           ),
                           filled: true,
-                          fillColor: Colors.grey[50],
+                          fillColor:
+                              Theme.of(context).inputDecorationTheme.fillColor,
                         ),
                         maxLines: 5,
                         onChanged: (_) => controller.clearError(),
@@ -233,6 +232,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             'dietary_preferences'.tr,
                             style: AppTextTheme.titleMedium.copyWith(
                               fontWeight: FontWeight.bold,
+                              color: AppColors.textSecondary,
                             ),
                           ),
                         ],
@@ -291,7 +291,10 @@ class _HomeScreenState extends State<HomeScreen> {
                               vertical: 18,
                             ),
                             decoration: BoxDecoration(
-                              color: AppColors.inputBackground,
+                              color:
+                                  Theme.of(
+                                    context,
+                                  ).inputDecorationTheme.fillColor,
                               borderRadius: BorderRadius.circular(8),
                               border: Border.all(color: AppColors.inputBorder),
                             ),

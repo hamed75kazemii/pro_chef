@@ -54,5 +54,5 @@ class AppColors {
   // App Bar Colors
   static const Color appBarBackground = pureWhite;
   static const Color appBarText = charcoal;
-  static const Color appBarIcon = warmOrange;
+  static const Color appBarIcon = pureWhite;
 }

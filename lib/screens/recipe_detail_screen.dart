@@ -13,8 +13,11 @@ class RecipeDetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(gradient: AppColors.primaryGradient),
+        ),
+
         title: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset('assets/icon/chef_pro.png', width: 28, height: 28),
             const SizedBox(width: 10),

@@ -14,8 +14,12 @@ class SettingsScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('settings'.tr),
-        backgroundColor: AppColors.appBarBackground,
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(gradient: AppColors.primaryGradient),
+        ),
+
         elevation: 0,
+        centerTitle: false,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: AppColors.appBarIcon),
           onPressed: () => Get.back(),
@@ -56,6 +60,7 @@ class SettingsScreen extends StatelessWidget {
                           'language'.tr,
                           style: AppTextTheme.titleMedium.copyWith(
                             fontWeight: FontWeight.bold,
+                            color: AppColors.textSecondary,
                           ),
                         ),
                       ],
@@ -122,6 +127,7 @@ class SettingsScreen extends StatelessWidget {
                           'theme'.tr,
                           style: AppTextTheme.titleMedium.copyWith(
                             fontWeight: FontWeight.bold,
+                            color: AppColors.textSecondary,
                           ),
                         ),
                       ],
@@ -195,6 +201,7 @@ class SettingsScreen extends StatelessWidget {
                           'App Info',
                           style: AppTextTheme.titleMedium.copyWith(
                             fontWeight: FontWeight.bold,
+                            color: AppColors.textSecondary,
                           ),
                         ),
                       ],
@@ -203,7 +210,8 @@ class SettingsScreen extends StatelessWidget {
                     Text(
                       'Pro Chef - AI Recipe Generator',
                       style: AppTextTheme.bodyLarge.copyWith(
-                        fontWeight: FontWeight.w500,
+                        fontWeight: FontWeight.bold,
+                        color: AppColors.textSecondary,
                       ),
                     ),
                     const SizedBox(height: 4),
@@ -258,7 +266,8 @@ class SettingsScreen extends StatelessWidget {
               displayName,
               style: AppTextTheme.bodyMedium.copyWith(
                 fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
-                color: isSelected ? AppColors.mintGreen : AppColors.textPrimary,
+                color:
+                    isSelected ? AppColors.mintGreen : AppColors.textSecondary,
               ),
             ),
             if (isSelected) ...[
@@ -307,7 +316,9 @@ class SettingsScreen extends StatelessWidget {
                 style: AppTextTheme.bodyMedium.copyWith(
                   fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
                   color:
-                      isSelected ? AppColors.warmOrange : AppColors.textPrimary,
+                      isSelected
+                          ? AppColors.warmOrange
+                          : AppColors.textSecondary,
                 ),
               ),
             ),

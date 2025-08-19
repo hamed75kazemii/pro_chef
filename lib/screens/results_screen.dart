@@ -15,8 +15,11 @@ class ResultsScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(gradient: AppColors.primaryGradient),
+        ),
+
         title: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset('assets/icon/chef_pro.png', width: 28, height: 28),
             const SizedBox(width: 10),
@@ -153,7 +156,7 @@ class RecipeCard extends StatelessWidget {
                   Icon(Icons.timer, size: 16, color: AppColors.iconLight),
                   const SizedBox(width: 4),
                   Text(
-                    'Tap to view full recipe',
+                    "tap_to_view_full_recipe".tr,
                     style: Theme.of(context).textTheme.bodySmall?.copyWith(
                       color: AppColors.warmOrange,
                       fontWeight: FontWeight.w500,

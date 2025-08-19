@@ -75,6 +75,7 @@ class AppTranslations extends Translations {
       'ai_error': 'Error generating recipes. Please try again.',
       'ai_no_ingredients':
           'Please provide some ingredients to generate recipes.',
+      'tap_to_view_full_recipe': 'Tap to view full recipe',
     },
     'fa': {
       // App
@@ -148,6 +149,8 @@ class AppTranslations extends Translations {
       'ai_error': 'خطا در تولید دستور پخت. لطفاً دوباره تلاش کنید.',
       'ai_no_ingredients':
           'لطفاً مواد اولیه‌ای برای تولید دستور پخت ارائه دهید.',
+      'tap_to_view_full_recipe':
+          'برای مشاهدهٔ دستور پخت کامل، بر روی آن کلیک کنید',
     },
   };
 }
