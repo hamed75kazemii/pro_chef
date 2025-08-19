@@ -9,7 +9,7 @@ class SplashConstants {
     milliseconds: 2000,
   );
   static const Duration particleAnimationDuration = Duration(
-    milliseconds: 3000,
+    milliseconds: 4000,
   );
 
   // Animation delays
@@ -45,7 +45,7 @@ class SplashConstants {
 
   // Particle properties
   static const double particleBaseSize = 18.0;
-  static const double particleMaxSize = 10.0;
+  static const double particleMaxSize = 6.0;
   static const double particleBaseOpacity = 0.4;
   static const double particleMaxOpacity = 0.3;
   static const double particleMovement = 25.0;
