@@ -111,7 +111,7 @@ class AppTextTheme {
   );
 
   static TextStyle get buttonText =>
-      _baseTextStyle(fontSize: 16, fontWeight: bold, height: 1.4);
+      _baseTextStyle(fontSize: 18, fontWeight: bold, height: 1.4);
 
   static TextStyle get cardTitle =>
       _baseTextStyle(fontSize: 20, fontWeight: semiBold, height: 1.3);

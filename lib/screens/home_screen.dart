@@ -3,7 +3,9 @@ import 'package:get/get.dart';
 import '../constants/app_colors.dart';
 import '../constants/app_text_theme.dart';
 import '../controllers/recipe_controller.dart';
+import '../controllers/root_controller.dart';
 import 'results_screen.dart';
+import 'settings_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -14,6 +16,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final RecipeController controller = Get.put(RecipeController());
+  final RootController rootController = Get.find<RootController>();
   final TextEditingController _ingredientsController = TextEditingController();
 
   @override
@@ -25,7 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
   void _generateRecipes() {
     final ingredientsText = _ingredientsController.text.trim();
     if (ingredientsText.isEmpty) {
-      controller.errorMessage.value = 'Please enter at least one ingredient';
+      controller.errorMessage.value = 'please_enter_ingredients'.tr;
       return;
     }
 
@@ -54,10 +57,26 @@ class _HomeScreenState extends State<HomeScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset('assets/icon/chef_pro.png', width: 60, height: 60),
-            // const SizedBox(width: 12),
-            //  const Text('Pro Chef'),
           ],
         ),
+        actions: [
+          // Settings Button
+          IconButton(
+            onPressed: () {
+              Get.to(() => const SettingsScreen());
+            },
+            icon: Container(
+              padding: const EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                color: Colors.white.withOpacity(0.2),
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: const Icon(Icons.settings, color: Colors.white, size: 20),
+            ),
+            tooltip: 'settings'.tr,
+          ),
+          const SizedBox(width: 8),
+        ],
         backgroundColor: AppColors.appBarBackground,
         elevation: 0,
       ),
@@ -92,7 +111,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       const SizedBox(height: 16),
                       Text(
-                        'What ingredients do you have?',
+                        'what_ingredients_have'.tr,
                         style: AppTextTheme.headlineSmall.copyWith(
                           fontWeight: FontWeight.bold,
                         ),
@@ -100,7 +119,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       const SizedBox(height: 8),
                       Text(
-                        'Enter your available ingredients and let AI create delicious recipes for you!',
+                        'enter_ingredients_description'.tr,
                         style: AppTextTheme.bodyMedium.copyWith(
                           color: AppColors.textSecondary,
                         ),
@@ -139,7 +158,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                           const SizedBox(width: 12),
                           Text(
-                            'Ingredients',
+                            'ingredients'.tr,
                             style: AppTextTheme.titleMedium.copyWith(
                               fontWeight: FontWeight.bold,
                             ),
@@ -149,11 +168,17 @@ class _HomeScreenState extends State<HomeScreen> {
                       const SizedBox(height: 12),
                       TextField(
                         textAlignVertical: TextAlignVertical.top,
-                        textAlign: TextAlign.start,
-
+                        textAlign:
+                            rootController.currentLanguage == 'fa'
+                                ? TextAlign.right
+                                : TextAlign.left,
+                        textDirection:
+                            rootController.currentLanguage == 'fa'
+                                ? TextDirection.rtl
+                                : TextDirection.ltr,
                         controller: _ingredientsController,
                         decoration: InputDecoration(
-                          hintText: '🖊️ e.g., chicken, rice, tomatoes, onions',
+                          hintText: 'ingredients_hint'.tr,
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(8),
                           ),
@@ -165,7 +190,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       const SizedBox(height: 8),
                       Text(
-                        'Separate ingredients with commas',
+                        'separate_ingredients'.tr,
                         style: AppTextTheme.bodySmall.copyWith(
                           color: AppColors.textSecondary,
                         ),
@@ -205,7 +230,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                           const SizedBox(width: 12),
                           Text(
-                            'Dietary Preferences',
+                            'dietary_preferences'.tr,
                             style: AppTextTheme.titleMedium.copyWith(
                               fontWeight: FontWeight.bold,
                             ),
@@ -229,25 +254,29 @@ class _HomeScreenState extends State<HomeScreen> {
                                   child: Column(
                                     mainAxisSize: MainAxisSize.min,
                                     children:
-                                        controller.availableFilters.map((
-                                          filter,
-                                        ) {
-                                          final isSelected = selected == filter;
-                                          return ListTile(
-                                            leading: const Icon(
-                                              Icons.restaurant,
-                                            ),
-                                            title: Text(
-                                              filter.isEmpty
-                                                  ? 'No preference'
-                                                  : filter,
-                                            ),
-                                            selected: isSelected,
-                                            onTap: () {
-                                              Navigator.pop(context, filter);
-                                            },
-                                          );
-                                        }).toList(),
+                                        controller.availableFiltersTranslated
+                                            .map((filter) {
+                                              final isSelected =
+                                                  selected == filter;
+                                              return ListTile(
+                                                leading: const Icon(
+                                                  Icons.restaurant,
+                                                ),
+                                                title: Text(
+                                                  filter.isEmpty
+                                                      ? 'no_preference'.tr
+                                                      : filter,
+                                                ),
+                                                selected: isSelected,
+                                                onTap: () {
+                                                  Navigator.pop(
+                                                    context,
+                                                    filter,
+                                                  );
+                                                },
+                                              );
+                                            })
+                                            .toList(),
                                   ),
                                 );
                               },
@@ -276,7 +305,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 Expanded(
                                   child: Text(
                                     selected.isEmpty
-                                        ? 'Select dietary preference'
+                                        ? 'select_dietary_preference'.tr
                                         : selected,
                                     style: AppTextTheme.bodyMedium.copyWith(
                                       color:
@@ -316,9 +345,11 @@ class _HomeScreenState extends State<HomeScreen> {
                           : const Icon(Icons.auto_awesome),
                   label: Text(
                     controller.isLoading.value
-                        ? 'Generating Recipes...'
-                        : 'Suggest Recipes',
-                    style: AppTextTheme.buttonText,
+                        ? 'generating_recipes'.tr
+                        : 'suggest_recipes'.tr,
+                    style: AppTextTheme.buttonText.copyWith(
+                      color: AppColors.pureWhite,
+                    ),
                   ),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.buttonPrimary,

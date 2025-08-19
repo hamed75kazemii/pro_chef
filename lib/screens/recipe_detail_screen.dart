@@ -18,7 +18,7 @@ class RecipeDetailScreen extends StatelessWidget {
           children: [
             Image.asset('assets/icon/chef_pro.png', width: 28, height: 28),
             const SizedBox(width: 10),
-            const Text('Recipe Details'),
+            Text('instructions'.tr),
           ],
         ),
         backgroundColor: AppColors.appBarBackground,
@@ -105,7 +105,7 @@ class RecipeDetailScreen extends StatelessWidget {
 
             // Steps Section
             Text(
-              'Instructions',
+              'instructions'.tr,
               style: AppTextTheme.headlineSmall.copyWith(
                 fontWeight: FontWeight.bold,
               ),
@@ -174,14 +174,14 @@ class RecipeDetailScreen extends StatelessWidget {
                     onPressed: () {
                       // TODO: Implement save recipe functionality
                       ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
+                        SnackBar(
                           content: Text('Recipe saved to favorites!'),
                           backgroundColor: Colors.green,
                         ),
                       );
                     },
                     icon: const Icon(Icons.favorite_border),
-                    label: const Text('Save Recipe'),
+                    label: Text('Save Recipe'),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: AppColors.success,
                       foregroundColor: AppColors.pureWhite,
@@ -198,14 +198,14 @@ class RecipeDetailScreen extends StatelessWidget {
                     onPressed: () {
                       // TODO: Implement share functionality
                       ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
+                        SnackBar(
                           content: Text('Recipe shared!'),
                           backgroundColor: Colors.blue,
                         ),
                       );
                     },
                     icon: const Icon(Icons.share),
-                    label: const Text('Share'),
+                    label: Text('Share'),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: AppColors.info,
                       foregroundColor: AppColors.pureWhite,

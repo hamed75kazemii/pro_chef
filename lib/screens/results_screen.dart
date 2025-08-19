@@ -20,7 +20,7 @@ class ResultsScreen extends StatelessWidget {
           children: [
             Image.asset('assets/icon/chef_pro.png', width: 28, height: 28),
             const SizedBox(width: 10),
-            const Text('Generated Recipes'),
+            Text('recipes_found'.tr),
           ],
         ),
         backgroundColor: AppColors.appBarBackground,
@@ -43,14 +43,14 @@ class ResultsScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 16),
                 Text(
-                  'No recipes found',
+                  'no_recipes_found'.tr,
                   style: AppTextTheme.headlineSmall.copyWith(
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  'Try different ingredients or filters',
+                  'try_different_ingredients'.tr,
                   style: AppTextTheme.bodyMedium.copyWith(
                     color: AppColors.textSecondary,
                   ),
