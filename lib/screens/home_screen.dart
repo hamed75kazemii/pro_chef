@@ -4,7 +4,6 @@ import '../constants/app_colors.dart';
 import '../constants/app_text_theme.dart';
 import '../controllers/recipe_controller.dart';
 import '../controllers/root_controller.dart';
-import '../controllers/saved_recipes_controller.dart';
 import 'results_screen.dart';
 import 'settings_screen.dart';
 import 'saved_recipes_screen.dart';
