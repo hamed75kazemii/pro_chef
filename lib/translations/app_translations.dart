@@ -76,6 +76,25 @@ class AppTranslations extends Translations {
       'ai_no_ingredients':
           'Please provide some ingredients to generate recipes.',
       'tap_to_view_full_recipe': 'Tap to view full recipe',
+
+      // Saved Recipes
+      'saved_recipes': 'Saved Recipes',
+      'no_saved_recipes': 'No Saved Recipes',
+      'saved_recipes_description': 'Your favorite recipes will appear here',
+      'save_recipe': 'Save Recipe',
+      'remove_from_favorites': 'Unsave Recipe',
+      'recipe_saved_to_favorites': 'Recipe saved to favorites!',
+      'recipe_removed_from_favorites': 'Recipe removed from favorites!',
+      'remove_recipe': 'Remove Recipe',
+      'remove_recipe_title': 'Remove Recipe',
+      'remove_recipe_message':
+          'Are you sure you want to remove this recipe from your favorites?',
+      'recipe_removed': 'Recipe removed successfully',
+      'clear_all': 'Clear All',
+      'clear_all_recipes_title': 'Clear All Recipes',
+      'clear_all_recipes_message':
+          'Are you sure you want to remove all saved recipes?',
+      'all_recipes_cleared': 'All recipes cleared successfully',
     },
     'fa': {
       // App
@@ -151,6 +170,26 @@ class AppTranslations extends Translations {
           'لطفاً مواد اولیه‌ای برای تولید دستور پخت ارائه دهید.',
       'tap_to_view_full_recipe':
           'برای مشاهدهٔ دستور پخت کامل، بر روی آن کلیک کنید',
+
+      // Saved Recipes
+      'saved_recipes': 'دستور پخت‌های ذخیره شده',
+      'no_saved_recipes': 'دستور پخت ذخیره شده‌ای وجود ندارد',
+      'saved_recipes_description':
+          'دستور پخت‌های مورد علاقه شما اینجا نمایش داده می‌شوند',
+      'save_recipe': 'ذخیره دستور پخت',
+      'remove_from_favorites': 'حذف از علاقه‌مندی‌ها',
+      'recipe_saved_to_favorites': 'دستور پخت به علاقه‌مندی‌ها اضافه شد!',
+      'recipe_removed_from_favorites': 'دستور پخت از علاقه‌مندی‌ها حذف شد!',
+      'remove_recipe': 'حذف دستور پخت',
+      'remove_recipe_title': 'حذف دستور پخت',
+      'remove_recipe_message':
+          'آیا مطمئن هستید که می‌خواهید این دستور پخت را از علاقه‌مندی‌ها حذف کنید؟',
+      'recipe_removed': 'دستور پخت با موفقیت حذف شد',
+      'clear_all': 'حذف همه',
+      'clear_all_recipes_title': 'حذف همه دستور پخت‌ها',
+      'clear_all_recipes_message':
+          'آیا مطمئن هستید که می‌خواهید همه دستور پخت‌های ذخیره شده را حذف کنید؟',
+      'all_recipes_cleared': 'همه دستور پخت‌ها با موفقیت حذف شدند',
     },
   };
 }

@@ -6,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'constants/app_colors.dart';
 import 'constants/app_text_theme.dart';
 import 'controllers/root_controller.dart';
+import 'controllers/saved_recipes_controller.dart';
 import 'translations/app_translations.dart';
 import 'screens/splash_screen.dart';
 
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final rootController = Get.put(RootController());
+    final savedRecipesController = Get.put(SavedRecipesController());
 
     return GetMaterialApp(
       title: 'Pro Chef - AI Recipe Generator',

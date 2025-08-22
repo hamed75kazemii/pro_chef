@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import '../constants/app_colors.dart';
 import '../constants/app_text_theme.dart';
 import '../models/recipe.dart';
+import '../controllers/saved_recipes_controller.dart';
 
 class RecipeDetailScreen extends StatelessWidget {
   final Recipe recipe;
@@ -173,27 +174,46 @@ class RecipeDetailScreen extends StatelessWidget {
             Row(
               children: [
                 Expanded(
-                  child: ElevatedButton.icon(
-                    onPressed: () {
-                      // TODO: Implement save recipe functionality
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text('Recipe saved to favorites!'),
-                          backgroundColor: Colors.green,
-                        ),
-                      );
-                    },
-                    icon: const Icon(Icons.favorite_border),
-                    label: Text('Save Recipe'),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: AppColors.success,
-                      foregroundColor: AppColors.pureWhite,
-                      padding: const EdgeInsets.symmetric(vertical: 12),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
+                  child: Obx(() {
+                    final savedController = Get.find<SavedRecipesController>();
+                    final isSaved = savedController.isRecipeSaved(recipe);
+
+                    return ElevatedButton.icon(
+                      onPressed: () {
+                        if (isSaved) {
+                          savedController.removeRecipe(recipe);
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text('recipe_removed_from_favorites'.tr),
+                              backgroundColor: AppColors.buttonSecondary,
+                            ),
+                          );
+                        } else {
+                          savedController.saveRecipe(recipe);
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text('recipe_saved_to_favorites'.tr),
+                              backgroundColor: AppColors.buttonSecondary,
+                            ),
+                          );
+                        }
+                      },
+                      icon: Icon(
+                        isSaved ? Icons.favorite : Icons.favorite_border,
                       ),
-                    ),
-                  ),
+                      label: Text(
+                        isSaved ? 'remove_from_favorites'.tr : 'save_recipe'.tr,
+                      ),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: AppColors.buttonPrimary,
+                        foregroundColor: AppColors.pureWhite,
+                        padding: const EdgeInsets.symmetric(vertical: 12),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                      ),
+                    );
+                  }),
                 ),
                 const SizedBox(width: 12),
                 Expanded(
@@ -203,14 +223,14 @@ class RecipeDetailScreen extends StatelessWidget {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
                           content: Text('Recipe shared!'),
-                          backgroundColor: Colors.blue,
+                          backgroundColor: AppColors.buttonPrimary,
                         ),
                       );
                     },
                     icon: const Icon(Icons.share),
                     label: Text('Share'),
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: AppColors.info,
+                      backgroundColor: AppColors.buttonSecondary,
                       foregroundColor: AppColors.pureWhite,
                       padding: const EdgeInsets.symmetric(vertical: 12),
                       shape: RoundedRectangleBorder(

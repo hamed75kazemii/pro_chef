@@ -4,8 +4,10 @@ import '../constants/app_colors.dart';
 import '../constants/app_text_theme.dart';
 import '../controllers/recipe_controller.dart';
 import '../controllers/root_controller.dart';
+import '../controllers/saved_recipes_controller.dart';
 import 'results_screen.dart';
 import 'settings_screen.dart';
+import 'saved_recipes_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -56,6 +58,32 @@ class _HomeScreenState extends State<HomeScreen> {
 
         title: Image.asset('assets/icon/chef_pro.png', width: 60, height: 60),
         actions: [
+          // Saved Recipes Button
+          Obx(() {
+            return Stack(
+              children: [
+                IconButton(
+                  onPressed: () {
+                    Get.to(() => const SavedRecipesScreen());
+                  },
+                  icon: Container(
+                    padding: const EdgeInsets.all(8),
+                    decoration: BoxDecoration(
+                      color: Colors.white.withOpacity(0.2),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: const Icon(
+                      Icons.favorite,
+                      color: Colors.white,
+                      size: 20,
+                    ),
+                  ),
+                  tooltip: 'saved_recipes'.tr,
+                ),
+              ],
+            );
+          }),
+          const SizedBox(width: 8),
           // Settings Button
           IconButton(
             onPressed: () {

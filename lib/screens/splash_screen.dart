@@ -223,8 +223,6 @@ class _MainContent extends StatelessWidget {
               ),
             ),
           ),
-          _LoadingSection(animation: textAnimation),
-          const SizedBox(height: SplashConstants.bottomSpacing),
         ],
       ),
     );
@@ -361,43 +359,6 @@ class _AnimatedTitle extends StatelessWidget {
                 ),
               ],
             ),
-          ),
-        );
-      },
-    );
-  }
-}
-
-// Loading section widget
-class _LoadingSection extends StatelessWidget {
-  final Animation<double> animation;
-
-  const _LoadingSection({required this.animation});
-
-  @override
-  Widget build(BuildContext context) {
-    return AnimatedBuilder(
-      animation: animation,
-      builder: (context, child) {
-        return Opacity(
-          opacity: animation.value,
-          child: Column(
-            children: [
-              const SizedBox(height: SplashConstants.loadingSpacing),
-              Text(
-                SplashConstants.loadingText,
-                style: AppTextTheme.loadingText.copyWith(
-                  color: AppColors.textSecondary,
-                ),
-              ),
-              const SizedBox(height: 8),
-              Text(
-                SplashConstants.loadingSubText,
-                style: AppTextTheme.loadingSubText.copyWith(
-                  color: AppColors.textLight,
-                ),
-              ),
-            ],
           ),
         );
       },
