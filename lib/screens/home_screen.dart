@@ -75,104 +75,141 @@ class _HomeScreenState extends State<HomeScreen> {
         flexibleSpace: Container(
           decoration: const BoxDecoration(gradient: AppColors.primaryGradient),
         ),
-        centerTitle: false,
-        title: Image.asset('assets/icon/chef_pro.png', width: 60, height: 60),
+        title: Row(
+          children: [
+            Container(
+              padding: const EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                color: Colors.white.withOpacity(0.2),
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Image.asset(
+                'assets/icon/chef_pro.png',
+                width: 32,
+                height: 32,
+              ),
+            ),
+            const SizedBox(width: 12),
+            Text(
+              'Pro Chef',
+              style: AppTextTheme.titleLarge.copyWith(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
+        ),
         actions: [
           // Saved Recipes Button
-          IconButton(
-            onPressed: () {
-              Get.to(() => const SavedRecipesScreen());
-            },
-            icon: Container(
-              padding: const EdgeInsets.all(8),
-              decoration: BoxDecoration(
-                color: Colors.white.withValues(alpha: 0.2),
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: const Icon(Icons.favorite, color: Colors.white, size: 20),
+          Container(
+            margin: const EdgeInsets.only(right: 8),
+            decoration: BoxDecoration(
+              color: Colors.white.withOpacity(0.2),
+              borderRadius: BorderRadius.circular(12),
             ),
-            tooltip: 'saved_recipes'.tr,
+            child: IconButton(
+              onPressed: () {
+                Get.to(() => const SavedRecipesScreen());
+              },
+              icon: const Icon(
+                Icons.favorite_border,
+                color: Colors.white,
+                size: 24,
+              ),
+              tooltip: 'saved_recipes'.tr,
+            ),
           ),
-          const SizedBox(width: 8),
           // Share App Button
-          IconButton(
-            onPressed: () {
-              _shareApp();
-            },
-            icon: Container(
-              padding: const EdgeInsets.all(8),
-              decoration: BoxDecoration(
-                color: Colors.white.withValues(alpha: 0.2),
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: const Icon(Icons.share, color: Colors.white, size: 20),
+          Container(
+            margin: const EdgeInsets.only(right: 8),
+            decoration: BoxDecoration(
+              color: Colors.white.withOpacity(0.2),
+              borderRadius: BorderRadius.circular(12),
             ),
-            tooltip: 'share_app'.tr,
+            child: IconButton(
+              onPressed: _shareApp,
+              icon: const Icon(Icons.share, color: Colors.white, size: 24),
+              tooltip: 'share_app'.tr,
+            ),
           ),
-          const SizedBox(width: 8),
           // Settings Button
-          IconButton(
-            onPressed: () {
-              Get.to(() => const SettingsScreen());
-            },
-            icon: Container(
-              padding: const EdgeInsets.all(8),
-              decoration: BoxDecoration(
-                color: Colors.white.withValues(alpha: 0.2),
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: const Icon(Icons.settings, color: Colors.white, size: 20),
+          Container(
+            margin: const EdgeInsets.only(right: 16),
+            decoration: BoxDecoration(
+              color: Colors.white.withOpacity(0.2),
+              borderRadius: BorderRadius.circular(12),
             ),
-            tooltip: 'settings'.tr,
+            child: IconButton(
+              onPressed: () {
+                Get.to(() => const SettingsScreen());
+              },
+              icon: const Icon(Icons.settings, color: Colors.white, size: 24),
+              tooltip: 'settings'.tr,
+            ),
           ),
-          const SizedBox(width: 8),
         ],
         backgroundColor: AppColors.appBarBackground,
         elevation: 0,
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(20.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              // Welcome Card
-              Card(
-                elevation: 4,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(16),
+              // Welcome Card with enhanced design
+              Container(
+                decoration: BoxDecoration(
+                  gradient: const LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [AppColors.mintGreen, AppColors.warmOrange],
+                  ),
+                  borderRadius: BorderRadius.circular(20),
+                  boxShadow: [
+                    BoxShadow(
+                      color: AppColors.mintGreen.withOpacity(0.3),
+                      blurRadius: 20,
+                      offset: const Offset(0, 10),
+                    ),
+                  ],
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.all(20.0),
+                  padding: const EdgeInsets.all(24.0),
                   child: Column(
                     children: [
                       Container(
                         width: 80,
                         height: 80,
                         decoration: BoxDecoration(
-                          gradient: AppColors.primaryGradient,
+                          color: Colors.white.withOpacity(0.2),
                           borderRadius: BorderRadius.circular(40),
+                          border: Border.all(
+                            color: Colors.white.withOpacity(0.3),
+                            width: 2,
+                          ),
                         ),
                         child: const Icon(
                           Icons.auto_awesome,
                           size: 40,
-                          color: AppColors.pureWhite,
+                          color: Colors.white,
                         ),
                       ),
-                      const SizedBox(height: 16),
+                      const SizedBox(height: 20),
                       Text(
                         'what_ingredients_have'.tr,
                         style: AppTextTheme.headlineSmall.copyWith(
                           fontWeight: FontWeight.bold,
-                          color: AppColors.textSecondary,
+                          color: Colors.white,
                         ),
                         textAlign: TextAlign.center,
                       ),
-                      const SizedBox(height: 8),
+                      const SizedBox(height: 12),
                       Text(
                         'enter_ingredients_description'.tr,
                         style: AppTextTheme.bodyMedium.copyWith(
-                          color: AppColors.textSecondary,
+                          color: Colors.white.withOpacity(0.9),
+                          height: 1.6,
                         ),
                         textAlign: TextAlign.center,
                       ),
@@ -180,44 +217,63 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
               ),
-              const SizedBox(height: 24),
+              const SizedBox(height: 32),
 
-              // Ingredients Input
+              // Ingredients Input with improved design
               Card(
-                elevation: 2,
+                elevation: 4,
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(16),
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.all(16.0),
+                  padding: const EdgeInsets.all(20),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Row(
                         children: [
                           Container(
-                            padding: const EdgeInsets.all(8),
+                            padding: const EdgeInsets.all(12),
                             decoration: BoxDecoration(
-                              color: AppColors.mintGreen.withValues(alpha: 0.1),
-                              borderRadius: BorderRadius.circular(8),
+                              gradient: LinearGradient(
+                                colors: [
+                                  AppColors.mintGreen.withOpacity(0.1),
+                                  AppColors.mintGreen.withOpacity(0.2),
+                                ],
+                              ),
+                              borderRadius: BorderRadius.circular(12),
                             ),
                             child: const Icon(
-                              Icons.shopping_basket,
+                              Icons.shopping_basket_rounded,
                               color: AppColors.mintGreen,
-                              size: 24,
+                              size: 28,
                             ),
                           ),
-                          const SizedBox(width: 12),
-                          Text(
-                            'ingredients'.tr,
-                            style: AppTextTheme.titleMedium.copyWith(
-                              color: AppColors.textSecondary,
-                              fontWeight: FontWeight.bold,
+                          const SizedBox(width: 16),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'ingredients'.tr,
+                                  style: AppTextTheme.titleMedium.copyWith(
+                                    color: AppColors.textSecondary,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                const SizedBox(height: 4),
+                                Text(
+                                  'separate_ingredients'.tr,
+                                  style: AppTextTheme.bodySmall.copyWith(
+                                    color: AppColors.textLight,
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ],
                       ),
-                      const SizedBox(height: 12),
+                      const SizedBox(height: 20),
                       TextField(
                         textAlignVertical: TextAlignVertical.top,
                         textAlign:
@@ -231,57 +287,55 @@ class _HomeScreenState extends State<HomeScreen> {
                         controller: _ingredientsController,
                         decoration: InputDecoration(
                           hintText: 'ingredients_hint'.tr,
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(8),
+                          hintStyle: AppTextTheme.bodyMedium.copyWith(
+                            color: AppColors.textLight,
                           ),
-                          filled: true,
-                          fillColor:
-                              Theme.of(context).inputDecorationTheme.fillColor,
+                          border: InputBorder.none,
+                          contentPadding: const EdgeInsets.all(16),
                         ),
-                        maxLines: 5,
+                        maxLines: 4,
+                        style: AppTextTheme.bodyMedium.copyWith(
+                          color: AppColors.textPrimary,
+                        ),
                         onChanged: (_) => controller.clearError(),
-                      ),
-                      const SizedBox(height: 8),
-                      Text(
-                        'separate_ingredients'.tr,
-                        style: AppTextTheme.bodySmall.copyWith(
-                          color: AppColors.textSecondary,
-                        ),
                       ),
                     ],
                   ),
                 ),
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 24),
 
-              // Filter Dropdown
+              // Filter Dropdown with enhanced design
               Card(
-                elevation: 2,
+                elevation: 4,
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(16),
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.all(16.0),
+                  padding: const EdgeInsets.all(20),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Row(
                         children: [
                           Container(
-                            padding: const EdgeInsets.all(8),
+                            padding: const EdgeInsets.all(12),
                             decoration: BoxDecoration(
-                              color: AppColors.warmOrange.withValues(
-                                alpha: 0.1,
+                              gradient: LinearGradient(
+                                colors: [
+                                  AppColors.warmOrange.withOpacity(0.1),
+                                  AppColors.warmOrange.withOpacity(0.2),
+                                ],
                               ),
-                              borderRadius: BorderRadius.circular(8),
+                              borderRadius: BorderRadius.circular(12),
                             ),
                             child: const Icon(
-                              Icons.filter_list,
+                              Icons.filter_list_rounded,
                               color: AppColors.warmOrange,
-                              size: 24,
+                              size: 28,
                             ),
                           ),
-                          const SizedBox(width: 12),
+                          const SizedBox(width: 16),
                           Text(
                             'dietary_preferences'.tr,
                             style: AppTextTheme.titleMedium.copyWith(
@@ -291,37 +345,113 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ],
                       ),
-                      const SizedBox(height: 12),
+                      const SizedBox(height: 20),
                       Obx(() {
                         final selected = controller.selectedFilter.value;
                         return GestureDetector(
                           onTap: () async {
                             final value = await showModalBottomSheet<String>(
                               context: context,
-                              shape: const RoundedRectangleBorder(
-                                borderRadius: BorderRadius.vertical(
-                                  top: Radius.circular(16),
-                                ),
-                              ),
+                              backgroundColor: Colors.transparent,
                               builder: (context) {
-                                return SafeArea(
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children:
-                                        controller.availableFiltersTranslated
+                                return Container(
+                                  decoration: const BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.vertical(
+                                      top: Radius.circular(20),
+                                    ),
+                                  ),
+                                  child: SafeArea(
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        Container(
+                                          width: 40,
+                                          height: 4,
+                                          margin: const EdgeInsets.symmetric(
+                                            vertical: 12,
+                                          ),
+                                          decoration: BoxDecoration(
+                                            color: AppColors.textLight,
+                                            borderRadius: BorderRadius.circular(
+                                              2,
+                                            ),
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.all(16),
+                                          child: Text(
+                                            'select_dietary_preference'.tr,
+                                            style: AppTextTheme.titleMedium
+                                                .copyWith(
+                                                  fontWeight: FontWeight.bold,
+                                                ),
+                                          ),
+                                        ),
+                                        ...controller.availableFiltersTranslated
                                             .map((filter) {
                                               final isSelected =
                                                   selected == filter;
                                               return ListTile(
-                                                leading: const Icon(
-                                                  Icons.restaurant,
+                                                leading: Container(
+                                                  padding: const EdgeInsets.all(
+                                                    8,
+                                                  ),
+                                                  decoration: BoxDecoration(
+                                                    color:
+                                                        isSelected
+                                                            ? AppColors
+                                                                .warmOrange
+                                                                .withOpacity(
+                                                                  0.1,
+                                                                )
+                                                            : AppColors
+                                                                .inputBackground,
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                          8,
+                                                        ),
+                                                  ),
+                                                  child: Icon(
+                                                    Icons.restaurant_rounded,
+                                                    color:
+                                                        isSelected
+                                                            ? AppColors
+                                                                .warmOrange
+                                                            : AppColors
+                                                                .iconLight,
+                                                    size: 20,
+                                                  ),
                                                 ),
                                                 title: Text(
                                                   filter.isEmpty
                                                       ? 'no_preference'.tr
                                                       : filter,
+                                                  style: AppTextTheme.bodyMedium
+                                                      .copyWith(
+                                                        fontWeight:
+                                                            isSelected
+                                                                ? FontWeight
+                                                                    .bold
+                                                                : FontWeight
+                                                                    .normal,
+                                                        color:
+                                                            isSelected
+                                                                ? AppColors
+                                                                    .warmOrange
+                                                                : AppColors
+                                                                    .textPrimary,
+                                                      ),
                                                 ),
-                                                selected: isSelected,
+                                                trailing:
+                                                    isSelected
+                                                        ? const Icon(
+                                                          Icons.check_circle,
+                                                          color:
+                                                              AppColors
+                                                                  .warmOrange,
+                                                        )
+                                                        : null,
                                                 onTap: () {
                                                   Navigator.pop(
                                                     context,
@@ -331,6 +461,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                               );
                                             })
                                             .toList(),
+                                        const SizedBox(height: 20),
+                                      ],
+                                    ),
                                   ),
                                 );
                               },
@@ -341,24 +474,33 @@ class _HomeScreenState extends State<HomeScreen> {
                           },
                           child: Container(
                             padding: const EdgeInsets.symmetric(
-                              horizontal: 16,
-                              vertical: 18,
+                              horizontal: 20,
+                              vertical: 20,
                             ),
                             decoration: BoxDecoration(
-                              color:
-                                  Theme.of(
-                                    context,
-                                  ).inputDecorationTheme.fillColor,
-                              borderRadius: BorderRadius.circular(8),
-                              border: Border.all(color: AppColors.inputBorder),
+                              color: AppColors.inputBackground,
+                              borderRadius: BorderRadius.circular(12),
+                              border: Border.all(
+                                color: AppColors.inputBorder.withOpacity(0.5),
+                              ),
                             ),
                             child: Row(
                               children: [
-                                const Icon(
-                                  Icons.restaurant,
-                                  color: AppColors.iconLight,
+                                Container(
+                                  padding: const EdgeInsets.all(8),
+                                  decoration: BoxDecoration(
+                                    color: AppColors.warmOrange.withOpacity(
+                                      0.1,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  child: const Icon(
+                                    Icons.restaurant_rounded,
+                                    color: AppColors.warmOrange,
+                                    size: 20,
+                                  ),
                                 ),
-                                const SizedBox(width: 12),
+                                const SizedBox(width: 16),
                                 Expanded(
                                   child: Text(
                                     selected.isEmpty
@@ -369,12 +511,17 @@ class _HomeScreenState extends State<HomeScreen> {
                                           selected.isEmpty
                                               ? AppColors.textLight
                                               : AppColors.textPrimary,
+                                      fontWeight:
+                                          selected.isEmpty
+                                              ? FontWeight.normal
+                                              : AppTextTheme.medium,
                                     ),
                                   ),
                                 ),
-                                const Icon(
-                                  Icons.arrow_drop_down,
+                                Icon(
+                                  Icons.keyboard_arrow_down_rounded,
                                   color: AppColors.iconLight,
+                                  size: 24,
                                 ),
                               ],
                             ),
@@ -385,67 +532,118 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
               ),
-              const SizedBox(height: 24),
+              const SizedBox(height: 32),
 
-              // Generate Button
+              // Generate Button with enhanced design
               Obx(
-                () => ElevatedButton.icon(
-                  onPressed:
-                      controller.isLoading.value ? null : _generateRecipes,
-                  icon:
-                      controller.isLoading.value
-                          ? const SizedBox(
-                            width: 20,
-                            height: 20,
-                            child: CircularProgressIndicator(strokeWidth: 2),
-                          )
-                          : const Icon(Icons.auto_awesome),
-                  label: Text(
-                    controller.isLoading.value
-                        ? 'generating_recipes'.tr
-                        : 'suggest_recipes'.tr,
-                    style: AppTextTheme.buttonText.copyWith(
-                      color: AppColors.pureWhite,
-                    ),
+                () => Container(
+                  decoration: BoxDecoration(
+                    gradient:
+                        controller.isLoading.value
+                            ? null
+                            : const LinearGradient(
+                              begin: Alignment.centerLeft,
+                              end: Alignment.centerRight,
+                              colors: [
+                                AppColors.mintGreen,
+                                AppColors.warmOrange,
+                              ],
+                            ),
+                    borderRadius: BorderRadius.circular(16),
+                    boxShadow:
+                        controller.isLoading.value
+                            ? null
+                            : [
+                              BoxShadow(
+                                color: AppColors.warmOrange.withOpacity(0.3),
+                                blurRadius: 15,
+                                offset: const Offset(0, 8),
+                              ),
+                            ],
                   ),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.buttonPrimary,
-                    foregroundColor: AppColors.buttonText,
-                    padding: const EdgeInsets.symmetric(vertical: 16),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
+                  child: ElevatedButton(
+                    onPressed:
+                        controller.isLoading.value ? null : _generateRecipes,
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor:
+                          controller.isLoading.value
+                              ? AppColors.inputBorder
+                              : Colors.transparent,
+                      foregroundColor: AppColors.pureWhite,
+                      padding: const EdgeInsets.symmetric(vertical: 20),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      elevation: 0,
+                      shadowColor: Colors.transparent,
                     ),
-                    elevation: 4,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        if (controller.isLoading.value)
+                          const SizedBox(
+                            width: 24,
+                            height: 24,
+                            child: CircularProgressIndicator(
+                              strokeWidth: 2,
+                              valueColor: AlwaysStoppedAnimation<Color>(
+                                Colors.white,
+                              ),
+                            ),
+                          )
+                        else
+                          const Icon(Icons.auto_awesome_rounded, size: 24),
+                        const SizedBox(width: 12),
+                        Text(
+                          controller.isLoading.value
+                              ? 'generating_recipes'.tr
+                              : 'suggest_recipes'.tr,
+                          style: AppTextTheme.buttonText.copyWith(
+                            color: AppColors.pureWhite,
+                            fontSize: 18,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 20),
 
-              // Error Message
+              // Error Message with improved design
               Obx(
                 () =>
                     controller.errorMessage.value.isNotEmpty
                         ? Container(
-                          padding: const EdgeInsets.all(12),
+                          padding: const EdgeInsets.all(16),
                           decoration: BoxDecoration(
-                            color: AppColors.error.withValues(alpha: 0.1),
-                            borderRadius: BorderRadius.circular(8),
+                            color: AppColors.error.withOpacity(0.1),
+                            borderRadius: BorderRadius.circular(12),
                             border: Border.all(
-                              color: AppColors.error.withValues(alpha: 0.3),
+                              color: AppColors.error.withOpacity(0.2),
                             ),
                           ),
                           child: Row(
                             children: [
-                              const Icon(
-                                Icons.error_outline,
-                                color: AppColors.error,
+                              Container(
+                                padding: const EdgeInsets.all(8),
+                                decoration: BoxDecoration(
+                                  color: AppColors.error.withOpacity(0.1),
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                child: const Icon(
+                                  Icons.error_outline_rounded,
+                                  color: AppColors.error,
+                                  size: 20,
+                                ),
                               ),
-                              const SizedBox(width: 8),
+                              const SizedBox(width: 12),
                               Expanded(
                                 child: Text(
                                   controller.errorMessage.value,
                                   style: AppTextTheme.error.copyWith(
                                     color: AppColors.error,
+                                    fontWeight: AppTextTheme.medium,
                                   ),
                                 ),
                               ),
