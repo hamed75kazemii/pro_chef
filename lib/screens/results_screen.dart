@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:share_plus/share_plus.dart';
 import '../constants/app_colors.dart';
 import '../constants/app_text_theme.dart';
 import '../controllers/recipe_controller.dart';
@@ -8,6 +9,30 @@ import 'recipe_detail_screen.dart';
 
 class ResultsScreen extends StatelessWidget {
   const ResultsScreen({super.key});
+
+  void _shareResults() {
+    final RecipeController controller = Get.find<RecipeController>();
+
+    if (controller.recipes.isEmpty) {
+      return;
+    }
+
+    final String shareText = '''
+👨‍🍳 ${'app_title'.tr} - ${'recipe_results'.tr}
+
+🍽️ ${'found_recipes'.tr} ${controller.recipes.length} ${'delicious_recipes'.tr}!
+
+📋 ${'recipes'.tr}:
+${controller.recipes.take(5).map((recipe) => '• ${recipe.name}').join('\n')}
+${controller.recipes.length > 5 ? '\n... ${'and_more'.tr} ${controller.recipes.length - 5} ${'more'.tr}!' : ''}
+
+✨ ${'generated_with_pro_chef'.tr}
+
+#ProChef #RecipeGenerator #Cooking
+''';
+
+    Share.share(shareText, subject: '${'check_out_these_recipes'.tr}');
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,6 +57,23 @@ class ResultsScreen extends StatelessWidget {
           icon: const Icon(Icons.arrow_back, color: AppColors.appBarIcon),
           onPressed: () => Get.back(),
         ),
+        actions: [
+          IconButton(
+            onPressed: () {
+              _shareResults();
+            },
+            icon: Container(
+              padding: const EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                color: Colors.white.withOpacity(0.2),
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: const Icon(Icons.share, color: Colors.white, size: 20),
+            ),
+            tooltip: 'share_results'.tr,
+          ),
+          const SizedBox(width: 8),
+        ],
       ),
       body: Obx(() {
         if (controller.recipes.isEmpty) {
@@ -80,6 +122,22 @@ class RecipeCard extends StatelessWidget {
   final Recipe recipe;
 
   const RecipeCard({super.key, required this.recipe});
+
+  void _shareSingleRecipe(Recipe recipe) {
+    final String shareText = '''
+🍽️ ${recipe.name}
+
+📝 Description:
+${recipe.description}
+
+📋 Instructions:
+${recipe.steps.asMap().entries.map((entry) => '${entry.key + 1}. ${entry.value}').join('\n')}
+
+👨‍🍳 Shared from Pro Chef App
+''';
+
+    Share.share(shareText, subject: 'Check out this recipe: ${recipe.name}');
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -133,6 +191,15 @@ class RecipeCard extends StatelessWidget {
                         ),
                       ],
                     ),
+                  ),
+                  IconButton(
+                    icon: const Icon(
+                      Icons.share,
+                      color: AppColors.mintGreen,
+                      size: 20,
+                    ),
+                    onPressed: () => _shareSingleRecipe(recipe),
+                    tooltip: 'share_recipe'.tr,
                   ),
                   const Icon(
                     Icons.arrow_forward_ios,

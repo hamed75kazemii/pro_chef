@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:share_plus/share_plus.dart';
 import '../constants/app_colors.dart';
 import '../constants/app_text_theme.dart';
 import '../controllers/saved_recipes_controller.dart';
@@ -8,6 +9,44 @@ import 'recipe_detail_screen.dart';
 
 class SavedRecipesScreen extends StatelessWidget {
   const SavedRecipesScreen({super.key});
+
+  void _shareSavedRecipes(SavedRecipesController controller) {
+    if (controller.savedRecipes.isEmpty) {
+      return;
+    }
+
+    final String shareText = '''
+👨‍🍳 ${'app_title'.tr} - ${'my_saved_recipes'.tr}
+
+🍽️ ${'i_have'.tr} ${controller.savedRecipes.length} ${'saved_recipes'.tr}!
+
+📋 ${'my_favorite_recipes'.tr}:
+${controller.savedRecipes.take(10).map((recipe) => '• ${recipe.name}').join('\n')}
+${controller.savedRecipes.length > 10 ? '\n... ${'and_more'.tr} ${controller.savedRecipes.length - 10} ${'more'.tr}!' : ''}
+
+✨ ${'saved_with_pro_chef'.tr}
+
+#ProChef #MyRecipes #Cooking
+''';
+
+    Share.share(shareText, subject: '${'check_out_my_saved_recipes'.tr}');
+  }
+
+  void _shareSingleRecipe(Recipe recipe) {
+    final String shareText = '''
+🍽️ ${recipe.name}
+
+📝 Description:
+${recipe.description}
+
+📋 Instructions:
+${recipe.steps.asMap().entries.map((entry) => '${entry.key + 1}. ${entry.value}').join('\n')}
+
+👨‍🍳 Shared from Pro Chef App
+''';
+
+    Share.share(shareText, subject: 'Check out this recipe: ${recipe.name}');
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,6 +71,22 @@ class SavedRecipesScreen extends StatelessWidget {
           onPressed: () => Get.back(),
         ),
         actions: [
+          Obx(() {
+            if (controller.savedRecipes.isEmpty) return const SizedBox.shrink();
+            return IconButton(
+              icon: Container(
+                padding: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  color: Colors.white.withOpacity(0.2),
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: const Icon(Icons.share, color: Colors.white, size: 20),
+              ),
+              onPressed: () => _shareSavedRecipes(controller),
+              tooltip: 'share_saved_recipes'.tr,
+            );
+          }),
+          const SizedBox(width: 8),
           Obx(() {
             if (controller.savedRecipes.isEmpty) return const SizedBox.shrink();
             return IconButton(
@@ -163,6 +218,11 @@ class SavedRecipesScreen extends StatelessWidget {
                     ),
                   ],
                 ),
+              ),
+              IconButton(
+                icon: const Icon(Icons.share, color: AppColors.mintGreen),
+                onPressed: () => _shareSingleRecipe(recipe),
+                tooltip: 'share_recipe'.tr,
               ),
               IconButton(
                 icon: const Icon(Icons.delete_outline, color: AppColors.error),

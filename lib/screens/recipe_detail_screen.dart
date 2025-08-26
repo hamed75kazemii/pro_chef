@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:share_plus/share_plus.dart';
 import '../constants/app_colors.dart';
 import '../constants/app_text_theme.dart';
 import '../models/recipe.dart';
@@ -9,6 +10,25 @@ class RecipeDetailScreen extends StatelessWidget {
   final Recipe recipe;
 
   const RecipeDetailScreen({super.key, required this.recipe});
+
+  void _shareRecipe() {
+    final String shareText = '''
+🍽️ ${recipe.name}
+
+📝 ${'description'.tr}:
+${recipe.description}
+
+📋 ${'instructions'.tr}:
+${recipe.steps.asMap().entries.map((entry) => '${entry.key + 1}. ${entry.value}').join('\n')}
+
+👨‍🍳 ${'shared_from_pro_chef'.tr}
+''';
+
+    Share.share(
+      shareText,
+      subject: '${'check_out_this_recipe'.tr}: ${recipe.name}',
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -219,16 +239,10 @@ class RecipeDetailScreen extends StatelessWidget {
                 Expanded(
                   child: ElevatedButton.icon(
                     onPressed: () {
-                      // TODO: Implement share functionality
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text('Recipe shared!'),
-                          backgroundColor: AppColors.buttonPrimary,
-                        ),
-                      );
+                      _shareRecipe();
                     },
                     icon: const Icon(Icons.share),
-                    label: Text('Share'),
+                    label: Text('share_recipe'.tr),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: AppColors.buttonSecondary,
                       foregroundColor: AppColors.pureWhite,

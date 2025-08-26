@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:share_plus/share_plus.dart';
 import '../constants/app_colors.dart';
 import '../constants/app_text_theme.dart';
 import '../controllers/recipe_controller.dart';
@@ -47,6 +48,26 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
+  void _shareApp() {
+    final String shareText = '''
+👨‍🍳 ${'app_title'.tr}
+
+🍽️ ${'enter_ingredients_description'.tr}
+
+✨ ${'features'.tr}:
+• ${'ai_powered_suggestions'.tr}
+• ${'dietary_preferences'.tr}
+• ${'save_favorite_recipes'.tr}
+• ${'easy_instructions'.tr}
+
+📱 ${'download_now'.tr}!
+
+#ProChef #RecipeGenerator #CookingApp
+''';
+
+    Share.share(shareText, subject: '${'check_out_pro_chef'.tr}');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,34 +75,40 @@ class _HomeScreenState extends State<HomeScreen> {
         flexibleSpace: Container(
           decoration: const BoxDecoration(gradient: AppColors.primaryGradient),
         ),
-
+        centerTitle: false,
         title: Image.asset('assets/icon/chef_pro.png', width: 60, height: 60),
         actions: [
           // Saved Recipes Button
-          Obx(() {
-            return Stack(
-              children: [
-                IconButton(
-                  onPressed: () {
-                    Get.to(() => const SavedRecipesScreen());
-                  },
-                  icon: Container(
-                    padding: const EdgeInsets.all(8),
-                    decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(0.2),
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: const Icon(
-                      Icons.favorite,
-                      color: Colors.white,
-                      size: 20,
-                    ),
-                  ),
-                  tooltip: 'saved_recipes'.tr,
-                ),
-              ],
-            );
-          }),
+          IconButton(
+            onPressed: () {
+              Get.to(() => const SavedRecipesScreen());
+            },
+            icon: Container(
+              padding: const EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                color: Colors.white.withValues(alpha: 0.2),
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: const Icon(Icons.favorite, color: Colors.white, size: 20),
+            ),
+            tooltip: 'saved_recipes'.tr,
+          ),
+          const SizedBox(width: 8),
+          // Share App Button
+          IconButton(
+            onPressed: () {
+              _shareApp();
+            },
+            icon: Container(
+              padding: const EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                color: Colors.white.withValues(alpha: 0.2),
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: const Icon(Icons.share, color: Colors.white, size: 20),
+            ),
+            tooltip: 'share_app'.tr,
+          ),
           const SizedBox(width: 8),
           // Settings Button
           IconButton(
@@ -91,7 +118,7 @@ class _HomeScreenState extends State<HomeScreen> {
             icon: Container(
               padding: const EdgeInsets.all(8),
               decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.2),
+                color: Colors.white.withValues(alpha: 0.2),
                 borderRadius: BorderRadius.circular(8),
               ),
               child: const Icon(Icons.settings, color: Colors.white, size: 20),

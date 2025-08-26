@@ -95,6 +95,33 @@ class AppTranslations extends Translations {
       'clear_all_recipes_message':
           'Are you sure you want to remove all saved recipes?',
       'all_recipes_cleared': 'All recipes cleared successfully',
+
+      // Share functionality
+      'share_app': 'Share App',
+      'share_recipe': 'Share Recipe',
+      'share_results': 'Share Results',
+      'share_saved_recipes': 'Share Saved Recipes',
+      'shared_from_pro_chef': 'Shared from Pro Chef App',
+      'check_out_this_recipe': 'Check out this recipe',
+      'check_out_pro_chef': 'Check out Pro Chef - AI Recipe Generator',
+      'check_out_my_saved_recipes': 'Check out my saved recipes from Pro Chef!',
+      'check_out_these_recipes': 'Check out these recipes from Pro Chef!',
+      'recipe_shared_successfully': 'Recipe shared successfully!',
+      'app_shared_successfully': 'App shared successfully!',
+      'results_shared_successfully': 'Results shared successfully!',
+      'saved_recipes_shared_successfully': 'Saved recipes shared successfully!',
+      'features': 'Features',
+      'ai_powered_suggestions': 'AI-powered recipe suggestions',
+      'save_favorite_recipes': 'Save favorite recipes',
+      'easy_instructions': 'Easy-to-follow instructions',
+      'download_now': 'Download now and start cooking amazing dishes',
+      'recipe_results': 'Recipe Results',
+      'found_recipes': 'Found',
+      'delicious_recipes': 'delicious recipes',
+      'recipes': 'Recipes',
+      'and_more': 'and',
+      'more': 'more',
+      'generated_with_pro_chef': 'Generated with Pro Chef AI Recipe Generator',
     },
     'fa': {
       // App
@@ -190,6 +217,37 @@ class AppTranslations extends Translations {
       'clear_all_recipes_message':
           'آیا مطمئن هستید که می‌خواهید همه دستور پخت‌های ذخیره شده را حذف کنید؟',
       'all_recipes_cleared': 'همه دستور پخت‌ها با موفقیت حذف شدند',
+
+      // Share functionality
+      'share_app': 'اشتراک‌گذاری برنامه',
+      'share_recipe': 'اشتراک‌گذاری دستور پخت',
+      'share_results': 'اشتراک‌گذاری نتایج',
+      'share_saved_recipes': 'اشتراک‌گذاری دستور پخت‌های ذخیره شده',
+      'shared_from_pro_chef': 'اشتراک‌گذاری شده از برنامه پرو شیف',
+      'check_out_this_recipe': 'این دستور پخت را ببینید',
+      'check_out_pro_chef':
+          'برنامه پرو شیف - تولید کننده دستور پخت هوشمند را ببینید',
+      'check_out_my_saved_recipes':
+          'دستور پخت‌های ذخیره شده من از پرو شیف را ببینید!',
+      'check_out_these_recipes': 'این دستور پخت‌ها از پرو شیف را ببینید!',
+      'recipe_shared_successfully': 'دستور پخت با موفقیت اشتراک‌گذاری شد!',
+      'app_shared_successfully': 'برنامه با موفقیت اشتراک‌گذاری شد!',
+      'results_shared_successfully': 'نتایج با موفقیت اشتراک‌گذاری شد!',
+      'saved_recipes_shared_successfully':
+          'دستور پخت‌های ذخیره شده با موفقیت اشتراک‌گذاری شد!',
+      'features': 'ویژگی‌ها',
+      'ai_powered_suggestions': 'پیشنهادات دستور پخت مبتنی بر هوش مصنوعی',
+      'save_favorite_recipes': 'ذخیره دستور پخت‌های مورد علاقه',
+      'easy_instructions': 'دستورالعمل‌های آسان',
+      'download_now': 'اکنون دانلود کنید و شروع به پخت غذاهای شگفت‌انگیز کنید',
+      'recipe_results': 'نتایج دستور پخت',
+      'found_recipes': 'یافت شد',
+      'delicious_recipes': 'دستور پخت خوشمزه',
+      'recipes': 'دستور پخت‌ها',
+      'and_more': 'و',
+      'more': 'بیشتر',
+      'generated_with_pro_chef':
+          'تولید شده با پرو شیف - تولید کننده دستور پخت هوشمند',
     },
   };
 }
