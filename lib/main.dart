@@ -80,6 +80,14 @@ class MyApp extends StatelessWidget {
             borderRadius: BorderRadius.circular(12),
             borderSide: const BorderSide(color: AppColors.inputFocus, width: 2),
           ),
+
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12),
+            borderSide: const BorderSide(
+              color: AppColors.inputBorder,
+              width: 1,
+            ),
+          ),
           filled: true,
           fillColor: AppColors.inputBackground,
         ),
@@ -134,6 +142,10 @@ class MyApp extends StatelessWidget {
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
             borderSide: const BorderSide(color: AppColors.inputFocus, width: 2),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12),
+            borderSide: const BorderSide(color: AppColors.charcoal, width: 1),
           ),
           filled: true,
           fillColor: const Color(0xFF2A2A2A),
