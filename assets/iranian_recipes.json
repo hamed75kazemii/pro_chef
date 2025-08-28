@@ -1,0 +1,244 @@
+{
+  "recipes": [
+    {
+      "id": 1,
+      "name": { "fa": "قورمه سبزی", "en": "Ghormeh Sabzi" },
+      "ingredients": {
+        "fa": "سبزی قورمه سبزی، گوشت گوسفند، لوبیا قرمز، پیاز، لیمو عمانی، روغن، نمک، فلفل",
+        "en": "Ghormeh sabzi herbs, lamb meat, red beans, onion, dried lime, oil, salt, pepper"
+      },
+      "cookingTime": { "fa": "120 دقیقه", "en": "120 minutes" },
+      "foodType": { "fa": "خورشت", "en": "Stew" },
+      "instructions": {
+        "fa": "1. سبزی را خرد کنید\n2. گوشت را تفت دهید\n3. پیاز را سرخ کنید\n4. همه مواد را با هم بپزید\n5. لیمو عمانی اضافه کنید",
+        "en": "1. Chop the herbs\n2. Sauté the meat\n3. Fry the onion\n4. Cook all ingredients together\n5. Add dried lime"
+      },
+      "ingredientsAvailable": true,
+      "simpleRecipe": true
+    },
+    {
+      "id": 2,
+      "name": { "fa": "کباب کوبیده", "en": "Koobideh Kebab" },
+      "ingredients": {
+        "fa": "گوشت چرخ شده، پیاز، نمک، فلفل، زردچوبه، کره",
+        "en": "Ground meat, onion, salt, pepper, turmeric, butter"
+      },
+      "cookingTime": { "fa": "45 دقیقه", "en": "45 minutes" },
+      "foodType": { "fa": "کباب", "en": "Kebab" },
+      "instructions": {
+        "fa": "1. گوشت و پیاز را مخلوط کنید\n2. ادویه‌ها را اضافه کنید\n3. روی سیخ بکشید\n4. کباب کنید",
+        "en": "1. Mix meat and onion\n2. Add spices\n3. Shape on skewer\n4. Grill"
+      },
+      "ingredientsAvailable": true,
+      "simpleRecipe": true
+    },
+    {
+      "id": 3,
+      "name": { "fa": "برنج با مرغ", "en": "Rice with Chicken" },
+      "ingredients": {
+        "fa": "برنج، مرغ، پیاز، زعفران، روغن، نمک، فلفل",
+        "en": "Rice, chicken, onion, saffron, oil, salt, pepper"
+      },
+      "cookingTime": { "fa": "60 دقیقه", "en": "60 minutes" },
+      "foodType": { "fa": "برنج", "en": "Rice Dish" },
+      "instructions": {
+        "fa": "1. برنج را خیس کنید\n2. مرغ را بپزید\n3. برنج را آبکش کنید\n4. با زعفران مخلوط کنید",
+        "en": "1. Soak rice\n2. Cook chicken\n3. Drain rice\n4. Mix with saffron"
+      },
+      "ingredientsAvailable": true,
+      "simpleRecipe": true
+    },
+    {
+      "id": 4,
+      "name": { "fa": "آش رشته", "en": "Ash Reshteh" },
+      "ingredients": {
+        "fa": "رشته، لوبیا، عدس، سبزی، پیاز، نعناع، کاشک",
+        "en": "Noodles, beans, lentils, herbs, onion, mint, kashk"
+      },
+      "cookingTime": { "fa": "90 دقیقه", "en": "90 minutes" },
+      "foodType": { "fa": "آش", "en": "Soup" },
+      "instructions": {
+        "fa": "1. حبوبات را بپزید\n2. سبزی را اضافه کنید\n3. رشته را اضافه کنید\n4. کاشک و نعناع روی آن بریزید",
+        "en": "1. Cook legumes\n2. Add herbs\n3. Add noodles\n4. Top with kashk and mint"
+      },
+      "ingredientsAvailable": false,
+      "simpleRecipe": false
+    },
+    {
+      "id": 5,
+      "name": { "fa": "دلمه برگ مو", "en": "Dolmeh Barg-e Mo" },
+      "ingredients": {
+        "fa": "برگ مو، برنج، گوشت چرخ شده، پیاز، سبزی، لیمو",
+        "en": "Grape leaves, rice, ground meat, onion, herbs, lemon"
+      },
+      "cookingTime": { "fa": "75 دقیقه", "en": "75 minutes" },
+      "foodType": { "fa": "دلمه", "en": "Stuffed" },
+      "instructions": {
+        "fa": "1. برگ مو را آماده کنید\n2. مواد را مخلوط کنید\n3. در برگ بپیچید\n4. بپزید",
+        "en": "1. Prepare grape leaves\n2. Mix ingredients\n3. Wrap in leaves\n4. Cook"
+      },
+      "ingredientsAvailable": false,
+      "simpleRecipe": false
+    },
+    {
+      "id": 6,
+      "name": { "fa": "کوفته تبریزی", "en": "Tabrizi Koofteh" },
+      "ingredients": {
+        "fa": "گوشت چرخ شده، برنج، پیاز، تخم مرغ، آلو، گردو، ادویه",
+        "en": "Ground meat, rice, onion, egg, plum, walnut, spices"
+      },
+      "cookingTime": { "fa": "80 دقیقه", "en": "80 minutes" },
+      "foodType": { "fa": "کوفته", "en": "Meatball" },
+      "instructions": {
+        "fa": "1. گوشت و برنج را مخلوط کنید\n2. آلو و گردو را داخل بگذارید\n3. شکل دهید\n4. بپزید",
+        "en": "1. Mix meat and rice\n2. Put plum and walnut inside\n3. Shape\n4. Cook"
+      },
+      "ingredientsAvailable": true,
+      "simpleRecipe": false
+    },
+    {
+      "id": 7,
+      "name": { "fa": "میرزا قاسمی", "en": "Mirza Ghasemi" },
+      "ingredients": {
+        "fa": "بادمجان، گوجه فرنگی، تخم مرغ، سیر، روغن، نمک، فلفل",
+        "en": "Eggplant, tomato, egg, garlic, oil, salt, pepper"
+      },
+      "cookingTime": { "fa": "40 دقیقه", "en": "40 minutes" },
+      "foodType": { "fa": "پیش غذا", "en": "Appetizer" },
+      "instructions": {
+        "fa": "1. بادمجان را کباب کنید\n2. گوجه را سرخ کنید\n3. سیر را اضافه کنید\n4. تخم مرغ را مخلوط کنید",
+        "en": "1. Grill eggplant\n2. Fry tomato\n3. Add garlic\n4. Mix with egg"
+      },
+      "ingredientsAvailable": true,
+      "simpleRecipe": true
+    },
+    {
+      "id": 8,
+      "name": { "fa": "فسنجان", "en": "Fesenjan" },
+      "ingredients": {
+        "fa": "گردو، انار، مرغ، پیاز، روغن، نمک، فلفل",
+        "en": "Walnut, pomegranate, chicken, onion, oil, salt, pepper"
+      },
+      "cookingTime": { "fa": "90 دقیقه", "en": "90 minutes" },
+      "foodType": { "fa": "خورشت", "en": "Stew" },
+      "instructions": {
+        "fa": "1. گردو را آسیاب کنید\n2. مرغ را بپزید\n3. رب انار اضافه کنید\n4. بپزید تا غلیظ شود",
+        "en": "1. Grind walnuts\n2. Cook chicken\n3. Add pomegranate paste\n4. Cook until thickened"
+      },
+      "ingredientsAvailable": false,
+      "simpleRecipe": false
+    },
+    {
+      "id": 9,
+      "name": { "fa": "کباب بختیاری", "en": "Bakhtiari Kebab" },
+      "ingredients": {
+        "fa": "گوشت بره، سینه مرغ، پیاز، کره، نمک، فلفل",
+        "en": "Lamb meat, chicken breast, onion, butter, salt, pepper"
+      },
+      "cookingTime": { "fa": "50 دقیقه", "en": "50 minutes" },
+      "foodType": { "fa": "کباب", "en": "Kebab" },
+      "instructions": {
+        "fa": "1. گوشت و مرغ را تکه کنید\n2. روی سیخ بکشید\n3. کباب کنید\n4. با کره سرو کنید",
+        "en": "1. Cut meat and chicken\n2. Thread on skewer\n3. Grill\n4. Serve with butter"
+      },
+      "ingredientsAvailable": true,
+      "simpleRecipe": true
+    },
+    {
+      "id": 10,
+      "name": { "fa": "برنج شیرین", "en": "Sweet Rice" },
+      "ingredients": {
+        "fa": "برنج، شکر، زعفران، کره، خلال بادام، خلال پسته",
+        "en": "Rice, sugar, saffron, butter, almond slivers, pistachio slivers"
+      },
+      "cookingTime": { "fa": "45 دقیقه", "en": "45 minutes" },
+      "foodType": { "fa": "دسر", "en": "Dessert" },
+      "instructions": {
+        "fa": "1. برنج را بپزید\n2. شکر و زعفران اضافه کنید\n3. کره اضافه کنید\n4. آجیل روی آن بریزید",
+        "en": "1. Cook rice\n2. Add sugar and saffron\n3. Add butter\n4. Top with nuts"
+      },
+      "ingredientsAvailable": true,
+      "simpleRecipe": true
+    },
+    {
+      "id": 11,
+      "name": { "fa": "کباب سلطانی", "en": "Soltani Kebab" },
+      "ingredients": {
+        "fa": "گوشت بره، گوشت چرخ شده، پیاز، کره، نمک، فلفل، زعفران",
+        "en": "Lamb meat, ground meat, onion, butter, salt, pepper, saffron"
+      },
+      "cookingTime": { "fa": "55 دقیقه", "en": "55 minutes" },
+      "foodType": { "fa": "کباب", "en": "Kebab" },
+      "instructions": {
+        "fa": "1. گوشت بره را تکه کنید\n2. گوشت چرخ شده را آماده کنید\n3. روی سیخ بکشید\n4. کباب کنید",
+        "en": "1. Cut lamb meat\n2. Prepare ground meat\n3. Thread on skewer\n4. Grill"
+      },
+      "ingredientsAvailable": true,
+      "simpleRecipe": true
+    },
+    {
+      "id": 12,
+      "name": { "fa": "خورشت قیمه", "en": "Gheymeh Stew" },
+      "ingredients": {
+        "fa": "گوشت گوسفند، لپه، پیاز، رب گوجه، لیمو عمانی، روغن، ادویه",
+        "en": "Lamb meat, split peas, onion, tomato paste, dried lime, oil, spices"
+      },
+      "cookingTime": { "fa": "100 دقیقه", "en": "100 minutes" },
+      "foodType": { "fa": "خورشت", "en": "Stew" },
+      "instructions": {
+        "fa": "1. گوشت را تفت دهید\n2. لپه را بپزید\n3. رب گوجه اضافه کنید\n4. لیمو عمانی اضافه کنید",
+        "en": "1. Sauté meat\n2. Cook split peas\n3. Add tomato paste\n4. Add dried lime"
+      },
+      "ingredientsAvailable": false,
+      "simpleRecipe": false
+    },
+    {
+      "id": 13,
+      "name": { "fa": "برنج با ماهی", "en": "Rice with Fish" },
+      "ingredients": {
+        "fa": "برنج، ماهی، پیاز، زعفران، لیمو، روغن، نمک، فلفل",
+        "en": "Rice, fish, onion, saffron, lemon, oil, salt, pepper"
+      },
+      "cookingTime": { "fa": "70 دقیقه", "en": "70 minutes" },
+      "foodType": { "fa": "برنج", "en": "Rice Dish" },
+      "instructions": {
+        "fa": "1. برنج را خیس کنید\n2. ماهی را بپزید\n3. برنج را آبکش کنید\n4. با زعفران مخلوط کنید",
+        "en": "1. Soak rice\n2. Cook fish\n3. Drain rice\n4. Mix with saffron"
+      },
+      "ingredientsAvailable": true,
+      "simpleRecipe": true
+    },
+    {
+      "id": 14,
+      "name": { "fa": "آش جو", "en": "Barley Soup" },
+      "ingredients": {
+        "fa": "جو، گوشت، سبزی، پیاز، نعناع، کاشک",
+        "en": "Barley, meat, herbs, onion, mint, kashk"
+      },
+      "cookingTime": { "fa": "120 دقیقه", "en": "120 minutes" },
+      "foodType": { "fa": "آش", "en": "Soup" },
+      "instructions": {
+        "fa": "1. جو را بپزید\n2. گوشت را اضافه کنید\n3. سبزی را اضافه کنید\n4. کاشک روی آن بریزید",
+        "en": "1. Cook barley\n2. Add meat\n3. Add herbs\n4. Top with kashk"
+      },
+      "ingredientsAvailable": false,
+      "simpleRecipe": false
+    },
+    {
+      "id": 15,
+      "name": { "fa": "کوفته لپه", "en": "Split Pea Meatballs" },
+      "ingredients": {
+        "fa": "لپه، گوشت چرخ شده، پیاز، تخم مرغ، ادویه",
+        "en": "Split peas, ground meat, onion, egg, spices"
+      },
+      "cookingTime": { "fa": "60 دقیقه", "en": "60 minutes" },
+      "foodType": { "fa": "کوفته", "en": "Meatball" },
+      "instructions": {
+        "fa": "1. لپه را بپزید\n2. با گوشت مخلوط کنید\n3. شکل دهید\n4. بپزید",
+        "en": "1. Cook split peas\n2. Mix with meat\n3. Shape\n4. Cook"
+      },
+      "ingredientsAvailable": true,
+      "simpleRecipe": false
+    }
+  ]
+}

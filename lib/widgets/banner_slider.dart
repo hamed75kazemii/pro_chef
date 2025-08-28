@@ -3,8 +3,8 @@ import 'package:get/get.dart';
 import 'dart:async';
 import '../constants/app_colors.dart';
 import '../constants/app_text_theme.dart';
-import '../constants/Screen_utills.dart';
 import '../controllers/root_controller.dart';
+import '../screens/processing_screen.dart';
 
 class BannerSlider extends StatefulWidget {
   final bool showCloseButton;
@@ -20,6 +20,7 @@ class _BannerSliderState extends State<BannerSlider>
     with TickerProviderStateMixin {
   final PageController _pageController = PageController();
   int _currentPage = 0;
+
   Timer? _timer;
   late AnimationController _scaleController;
   late Animation<double> _scaleAnimation;
@@ -39,7 +40,7 @@ class _BannerSliderState extends State<BannerSlider>
     BannerItem(
       title: 'banner_title_2',
       subtitle: 'banner_subtitle_2',
-      icon: Icons.favorite_rounded,
+      icon: Icons.bookmark_border,
       gradient: LinearGradient(
         colors: [AppColors.warmOrange, AppColors.warmOrange.withOpacity(0.8)],
         begin: Alignment.topLeft,
@@ -80,7 +81,7 @@ class _BannerSliderState extends State<BannerSlider>
   }
 
   void _startAutoScroll() {
-    _timer = Timer.periodic(const Duration(seconds: 4), (timer) {
+    _timer = Timer.periodic(Duration(seconds: 10), (timer) {
       if (mounted) {
         if (_currentPage < _banners.length - 1) {
           _pageController.nextPage(
@@ -238,8 +239,8 @@ class _BannerSliderState extends State<BannerSlider>
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: [
-            banner.gradient.colors.first.withOpacity(0.2),
-            banner.gradient.colors.last.withOpacity(0.1),
+            banner.gradient.colors.first.withOpacity(0.4),
+            banner.gradient.colors.last.withOpacity(0.3),
           ],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
@@ -279,6 +280,7 @@ class _BannerSliderState extends State<BannerSlider>
                   Text(
                     banner.subtitle.tr,
                     style: AppTextTheme.bodyMedium.copyWith(
+                      fontWeight: FontWeight.bold,
                       color: Colors.white.withOpacity(0.9),
                       height: 1.4,
                     ),
@@ -324,7 +326,7 @@ class _BannerSliderState extends State<BannerSlider>
       children: List.generate(
         _banners.length,
         (index) => Container(
-          width: _currentPage == index ? 24 : 8,
+          width: _currentPage == index ? 12 : 8,
           height: 8,
           margin: const EdgeInsets.symmetric(horizontal: 4),
           decoration: BoxDecoration(

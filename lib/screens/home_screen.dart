@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pro_chef/constants/Screen_utills.dart';
+import 'package:pro_chef/screens/processing_screen.dart';
 import 'package:pro_chef/usecases/appbar/home_appbar.dart';
 import '../constants/app_colors.dart';
 import '../constants/app_text_theme.dart';
@@ -120,6 +121,35 @@ class _HomeScreenState extends State<HomeScreen> {
 
             // Banner Slider
             const BannerSlider(),
+
+            Container(
+              margin: const EdgeInsets.symmetric(horizontal: 16),
+              child: ElevatedButton.icon(
+                onPressed: () {
+                  Get.to(() => const ProcessingScreen());
+                },
+                icon: const Icon(Icons.restaurant_rounded, color: Colors.white),
+                label: Text(
+                  'what_to_cook'.tr,
+                  style: AppTextTheme.buttonText.copyWith(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: AppColors.mintGreen,
+                  foregroundColor: Colors.white,
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 24,
+                    vertical: 16,
+                  ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  elevation: 4,
+                ),
+              ),
+            ),
 
             Padding(
               padding: const EdgeInsets.all(20.0),
@@ -301,8 +331,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                             ).brightness ==
                                                             Brightness.dark
                                                         ? Colors.grey[600]
-                                                        : AppColors
-                                                            .appBarBackground,
+                                                        : AppColors.charcoal,
                                                 borderRadius:
                                                     BorderRadius.circular(2),
                                               ),

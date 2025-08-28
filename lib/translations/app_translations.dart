@@ -142,6 +142,20 @@ class AppTranslations extends Translations {
       'banner_title_3': 'Quick & Easy Meals',
       'banner_subtitle_3':
           'Discover delicious recipes that fit your busy lifestyle',
+
+      // What to Cook Feature
+      'what_to_cook': 'What to Cook',
+      'what_to_cook_description': 'Discover amazing Iranian recipes',
+      'processing_recipes': 'Processing Recipes...',
+      'chef_cooking': 'Chef is cooking for you',
+      'simple_recipes': 'Simple Recipes',
+      'available_ingredients': 'Available Ingredients',
+      'random_suggestions': 'Random Suggestions',
+      'view_recipe': 'View Recipe',
+      'cooking_time_label': 'Cooking Time',
+      'food_type_label': 'Food Type',
+      'ingredients_label': 'Ingredients',
+      'instructions_label': 'Instructions',
     },
     'fa': {
       // App
@@ -228,7 +242,7 @@ class AppTranslations extends Translations {
           'برای مشاهدهٔ دستور پخت کامل، بر روی آن کلیک کنید',
 
       // Saved Recipes
-      'saved_recipes': 'دستور پخت‌های ذخیره شده',
+      'saved_recipes': 'ذخیره شده ها',
       'no_saved_recipes': 'دستور پخت ذخیره شده‌ای وجود ندارد',
       'saved_recipes_description':
           'دستور پخت‌های مورد علاقه شما اینجا نمایش داده می‌شوند',
@@ -248,8 +262,8 @@ class AppTranslations extends Translations {
       'all_recipes_cleared': 'همه دستور پخت‌ها با موفقیت حذف شدند',
 
       // Share functionality
-      'share_app': 'اشتراک‌گذاری برنامه',
-      'share_recipe': 'اشتراک‌گذاری دستور پخت',
+      'share_app': 'اشتراک‌ گذاری برنامه',
+      'share_recipe': 'اشتراک‌ گذاری ',
       'share_results': 'اشتراک‌گذاری نتایج',
       'share_saved_recipes': 'اشتراک‌گذاری دستور پخت‌های ذخیره شده',
       'shared_from_pro_chef': 'اشتراک‌گذاری شده از برنامه پرو شیف',
@@ -287,6 +301,20 @@ class AppTranslations extends Translations {
       'banner_title_3': 'غذاهای سریع و آسان',
       'banner_subtitle_3':
           'دستور پخت‌های خوشمزه‌ای را کشف کنید که با شما سازگار باشد',
+
+      // What to Cook Feature
+      'what_to_cook': 'چی بپزم',
+      'what_to_cook_description': 'دستور پخت‌های شگفت‌انگیز ایرانی را کشف کنید',
+      'processing_recipes': 'در حال پردازش دستور پخت‌ها...',
+      'chef_cooking': 'آشپز در حال پخت برای شماست',
+      'simple_recipes': 'دستور پخت‌های ساده',
+      'available_ingredients': 'مواد اولیه در دسترس',
+      'random_suggestions': 'پیشنهادات تصادفی',
+      'view_recipe': 'مشاهده دستور پخت',
+      'cooking_time_label': 'زمان پخت',
+      'food_type_label': 'نوع غذا',
+      'ingredients_label': 'مواد اولیه',
+      'instructions_label': 'دستورالعمل',
     },
   };
 }
