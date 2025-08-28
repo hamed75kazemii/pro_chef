@@ -131,6 +131,17 @@ class AppTranslations extends Translations {
       'and_more': 'and',
       'more': 'more',
       'generated_with_pro_chef': 'Generated with Pro Chef AI Recipe Generator',
+
+      // Banner Slider
+      'banner_title_1': 'AI-Powered Recipes',
+      'banner_subtitle_1':
+          'Get personalized recipe suggestions based on your ingredients',
+      'banner_title_2': 'Save Your Favorites',
+      'banner_subtitle_2':
+          'Keep your favorite recipes organized and easily accessible',
+      'banner_title_3': 'Quick & Easy Meals',
+      'banner_subtitle_3':
+          'Discover delicious recipes that fit your busy lifestyle',
     },
     'fa': {
       // App
@@ -266,6 +277,16 @@ class AppTranslations extends Translations {
       'more': 'بیشتر',
       'generated_with_pro_chef':
           'تولید شده با پرو شیف - تولید کننده دستور پخت هوشمند',
+
+      // Banner Slider
+      'banner_title_1': 'دستور پخت هوشمند',
+      'banner_subtitle_1': 'پیشنهادات شخصی‌سازی شده بر اساس مواد اولیه شما',
+      'banner_title_2': 'ذخیره علاقه‌مندی‌ها',
+      'banner_subtitle_2':
+          'دستور پخت‌های مورد علاقه خود را منظم و قابل دسترس نگه دارید',
+      'banner_title_3': 'غذاهای سریع و آسان',
+      'banner_subtitle_3':
+          'دستور پخت‌های خوشمزه‌ای را کشف کنید که با شما سازگار باشد',
     },
   };
 }

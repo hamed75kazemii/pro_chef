@@ -6,6 +6,7 @@ import '../constants/app_colors.dart';
 import '../constants/app_text_theme.dart';
 import '../controllers/recipe_controller.dart';
 import '../controllers/root_controller.dart';
+import '../widgets/banner_slider.dart';
 import 'results_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -117,13 +118,16 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
 
+            // Banner Slider
+            const BannerSlider(),
+
             Padding(
               padding: const EdgeInsets.all(20.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   // Welcome Card with enhanced design
-                  const SizedBox(height: 32),
+                  const SizedBox(height: 16),
 
                   // Ingredients Input with improved design
                   Card(
