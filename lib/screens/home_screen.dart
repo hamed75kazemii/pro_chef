@@ -266,13 +266,18 @@ class _HomeScreenState extends State<HomeScreen> {
                                 >(
                                   context: context,
                                   backgroundColor: Colors.transparent,
+                                  isScrollControlled: true,
                                   builder: (context) {
                                     return Container(
-                                      decoration: const BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius: BorderRadius.vertical(
-                                          top: Radius.circular(20),
-                                        ),
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                          0.7,
+                                      decoration: BoxDecoration(
+                                        color: Theme.of(context).cardColor,
+                                        borderRadius:
+                                            const BorderRadius.vertical(
+                                              top: Radius.circular(20),
+                                            ),
                                       ),
                                       child: SafeArea(
                                         child: Column(
@@ -287,8 +292,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                                   ),
                                               decoration: BoxDecoration(
                                                 color:
-                                                    AppColors
-                                                        .appBarBackground, //TODO: Set With theme
+                                                    Theme.of(
+                                                              context,
+                                                            ).brightness ==
+                                                            Brightness.dark
+                                                        ? Colors.grey[600]
+                                                        : AppColors
+                                                            .appBarBackground,
                                                 borderRadius:
                                                     BorderRadius.circular(2),
                                               ),
@@ -301,82 +311,122 @@ class _HomeScreenState extends State<HomeScreen> {
                                                     .copyWith(
                                                       fontWeight:
                                                           FontWeight.bold,
+                                                      color:
+                                                          Theme.of(
+                                                                    context,
+                                                                  ).brightness ==
+                                                                  Brightness
+                                                                      .dark
+                                                              ? Colors.white
+                                                              : AppColors
+                                                                  .textPrimary,
                                                     ),
                                               ),
                                             ),
-                                            ...controller.availableFiltersTranslated.map((
-                                              filter,
-                                            ) {
-                                              final isSelected =
-                                                  selected == filter;
-                                              return ListTile(
-                                                leading: Container(
-                                                  padding: const EdgeInsets.all(
-                                                    8,
-                                                  ),
-                                                  decoration: BoxDecoration(
-                                                    color:
-                                                        isSelected
-                                                            ? AppColors
-                                                                .warmOrange
-                                                                .withOpacity(
-                                                                  0.1,
-                                                                )
-                                                            : AppColors
-                                                                .inputBackground,
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                          8,
-                                                        ),
-                                                  ),
-                                                  child: Icon(
-                                                    Icons.restaurant_rounded,
-                                                    color:
-                                                        isSelected
-                                                            ? AppColors
-                                                                .warmOrange
-                                                            : AppColors
-                                                                .iconLight,
-                                                    size: 20,
-                                                  ),
+                                            Expanded(
+                                              child: SingleChildScrollView(
+                                                child: Column(
+                                                  children:
+                                                      controller.availableFiltersTranslated.map((
+                                                        filter,
+                                                      ) {
+                                                        final isSelected =
+                                                            selected == filter;
+                                                        return ListTile(
+                                                          leading: Container(
+                                                            padding:
+                                                                const EdgeInsets.all(
+                                                                  8,
+                                                                ),
+                                                            decoration: BoxDecoration(
+                                                              color:
+                                                                  isSelected
+                                                                      ? AppColors
+                                                                          .warmOrange
+                                                                          .withOpacity(
+                                                                            0.1,
+                                                                          )
+                                                                      : (Theme.of(
+                                                                                context,
+                                                                              ).brightness ==
+                                                                              Brightness.dark
+                                                                          ? const Color(
+                                                                            0xFF2A2A2A,
+                                                                          )
+                                                                          : AppColors
+                                                                              .inputBackground),
+                                                              borderRadius:
+                                                                  BorderRadius.circular(
+                                                                    8,
+                                                                  ),
+                                                            ),
+                                                            child: Icon(
+                                                              controller
+                                                                  .getFilterIcon(
+                                                                    filter,
+                                                                  ),
+                                                              color:
+                                                                  isSelected
+                                                                      ? AppColors
+                                                                          .warmOrange
+                                                                      : (Theme.of(
+                                                                                context,
+                                                                              ).brightness ==
+                                                                              Brightness.dark
+                                                                          ? Colors
+                                                                              .grey[400]
+                                                                          : AppColors
+                                                                              .iconLight),
+                                                              size: 20,
+                                                            ),
+                                                          ),
+                                                          title: Text(
+                                                            filter.isEmpty
+                                                                ? 'no_preference'
+                                                                    .tr
+                                                                : filter,
+                                                            style: AppTextTheme.bodyMedium.copyWith(
+                                                              fontWeight:
+                                                                  isSelected
+                                                                      ? FontWeight
+                                                                          .bold
+                                                                      : FontWeight
+                                                                          .normal,
+                                                              color:
+                                                                  isSelected
+                                                                      ? AppColors
+                                                                          .warmOrange
+                                                                      : (Theme.of(
+                                                                                context,
+                                                                              ).brightness ==
+                                                                              Brightness.dark
+                                                                          ? Colors
+                                                                              .white
+                                                                          : AppColors
+                                                                              .textPrimary),
+                                                            ),
+                                                          ),
+                                                          trailing:
+                                                              isSelected
+                                                                  ? const Icon(
+                                                                    Icons
+                                                                        .check_circle,
+                                                                    color:
+                                                                        AppColors
+                                                                            .warmOrange,
+                                                                  )
+                                                                  : null,
+                                                          onTap: () {
+                                                            Navigator.pop(
+                                                              context,
+                                                              filter,
+                                                            );
+                                                          },
+                                                        );
+                                                      }).toList(),
                                                 ),
-                                                title: Text(
-                                                  filter.isEmpty
-                                                      ? 'no_preference'.tr
-                                                      : filter,
-                                                  style: AppTextTheme.bodyMedium
-                                                      .copyWith(
-                                                        fontWeight:
-                                                            isSelected
-                                                                ? FontWeight
-                                                                    .bold
-                                                                : FontWeight
-                                                                    .normal,
-                                                        color:
-                                                            isSelected
-                                                                ? AppColors
-                                                                    .warmOrange
-                                                                : AppColors
-                                                                    .textPrimary,
-                                                      ),
-                                                ),
-                                                trailing:
-                                                    isSelected
-                                                        ? const Icon(
-                                                          Icons.check_circle,
-                                                          color:
-                                                              AppColors
-                                                                  .warmOrange,
-                                                        )
-                                                        : null,
-                                                onTap: () {
-                                                  Navigator.pop(
-                                                    context,
-                                                    filter,
-                                                  );
-                                                },
-                                              );
-                                            }).toList(),
+                                              ),
+                                            ),
                                             const SizedBox(height: 20),
                                           ],
                                         ),
@@ -394,12 +444,20 @@ class _HomeScreenState extends State<HomeScreen> {
                                   vertical: 20,
                                 ),
                                 decoration: BoxDecoration(
-                                  color: AppColors.inputBackground,
+                                  color:
+                                      Theme.of(context).brightness ==
+                                              Brightness.dark
+                                          ? const Color(0xFF2A2A2A)
+                                          : AppColors.inputBackground,
                                   borderRadius: BorderRadius.circular(12),
                                   border: Border.all(
-                                    color: AppColors.inputBorder.withOpacity(
-                                      0.5,
-                                    ),
+                                    color:
+                                        Theme.of(context).brightness ==
+                                                Brightness.dark
+                                            ? Colors.grey.withOpacity(0.3)
+                                            : AppColors.inputBorder.withOpacity(
+                                              0.5,
+                                            ),
                                   ),
                                 ),
                                 child: Row(
@@ -412,8 +470,12 @@ class _HomeScreenState extends State<HomeScreen> {
                                         ),
                                         borderRadius: BorderRadius.circular(8),
                                       ),
-                                      child: const Icon(
-                                        Icons.restaurant_rounded,
+                                      child: Icon(
+                                        selected.isEmpty
+                                            ? Icons.restaurant_rounded
+                                            : controller.getFilterIcon(
+                                              selected,
+                                            ),
                                         color: AppColors.warmOrange,
                                         size: 20,
                                       ),
@@ -427,8 +489,18 @@ class _HomeScreenState extends State<HomeScreen> {
                                         style: AppTextTheme.bodyMedium.copyWith(
                                           color:
                                               selected.isEmpty
-                                                  ? AppColors.textLight
-                                                  : AppColors.textPrimary,
+                                                  ? (Theme.of(
+                                                            context,
+                                                          ).brightness ==
+                                                          Brightness.dark
+                                                      ? Colors.grey[400]
+                                                      : AppColors.textLight)
+                                                  : (Theme.of(
+                                                            context,
+                                                          ).brightness ==
+                                                          Brightness.dark
+                                                      ? Colors.white
+                                                      : AppColors.textPrimary),
                                           fontWeight:
                                               selected.isEmpty
                                                   ? FontWeight.normal
@@ -438,7 +510,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                     ),
                                     Icon(
                                       Icons.keyboard_arrow_down_rounded,
-                                      color: AppColors.iconLight,
+                                      color:
+                                          Theme.of(context).brightness ==
+                                                  Brightness.dark
+                                              ? Colors.grey[400]
+                                              : AppColors.iconLight,
                                       size: 24,
                                     ),
                                   ],

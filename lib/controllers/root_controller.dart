@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'recipe_controller.dart';
 
 class RootController extends GetxController {
   static RootController get to => Get.find();
@@ -44,6 +45,14 @@ class RootController extends GetxController {
 
     // Update app locale
     Get.updateLocale(Locale(newLanguage));
+
+    // Update recipe controller filter translation
+    try {
+      final recipeController = Get.find<RecipeController>();
+      recipeController.updateSelectedFilterTranslation();
+    } catch (e) {
+      // Recipe controller might not be initialized yet
+    }
   }
 
   void setLanguage(String languageCode) {
@@ -51,6 +60,14 @@ class RootController extends GetxController {
       _currentLanguage.value = languageCode;
       _storage.write(_languageKey, languageCode);
       Get.updateLocale(Locale(languageCode));
+
+      // Update recipe controller filter translation
+      try {
+        final recipeController = Get.find<RecipeController>();
+        recipeController.updateSelectedFilterTranslation();
+      } catch (e) {
+        // Recipe controller might not be initialized yet
+      }
     }
   }
 
