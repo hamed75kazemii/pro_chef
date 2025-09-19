@@ -1,9 +1,13 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'constants/app_colors.dart';
+import 'constants/app_config.dart';
 import 'constants/app_text_theme.dart';
 import 'controllers/root_controller.dart';
 import 'controllers/saved_recipes_controller.dart';
@@ -12,6 +16,38 @@ import 'screens/splash_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  // Load environment variables from .env file
+  try {
+    await dotenv.load(fileName: ".env");
+    // ignore: avoid_print
+    log('Environment file loaded successfully');
+  } catch (e) {
+    // ignore: avoid_print
+    log('Warning: Could not load .env file: $e');
+    log('Trying to load from .env.example...');
+
+    try {
+      await dotenv.load(fileName: ".env.example");
+      // ignore: avoid_print
+      log('Environment example file loaded (for reference)');
+    } catch (e2) {
+      // ignore: avoid_print
+      log('Warning: Could not load .env.example file: $e2');
+    }
+
+    log('Using fallback configuration...');
+  }
+
+  // Test API key access (this will use .env file or fallback)
+  try {
+    final apiKey = AppConfig.liaraApiKey;
+    // ignore: avoid_print
+    log('API Key Status: ✅ Available (${apiKey.substring(0, 10)}...)');
+  } catch (e) {
+    // ignore: avoid_print
+    log('API Key Status: ❌ Error - $e');
+  }
   await GetStorage.init();
   runApp(const MyApp());
 }
@@ -52,7 +88,7 @@ class MyApp extends StatelessWidget {
                 ? 'Vazir'
                 : GoogleFonts.poppins().fontFamily,
         scaffoldBackgroundColor: AppColors.backgroundLight,
-        cardTheme: CardTheme(
+        cardTheme: CardThemeData(
           elevation: 4,
           color: AppColors.cardBackground,
           shadowColor: AppColors.cardShadow,
@@ -115,7 +151,7 @@ class MyApp extends StatelessWidget {
                 ? 'Vazir'
                 : GoogleFonts.poppins().fontFamily,
         scaffoldBackgroundColor: const Color(0xFF121212),
-        cardTheme: CardTheme(
+        cardTheme: CardThemeData(
           elevation: 4,
           color: const Color(0xFF1E1E1E),
           shadowColor: Colors.black26,
@@ -150,13 +186,13 @@ class MyApp extends StatelessWidget {
           filled: true,
           fillColor: const Color(0xFF2A2A2A),
         ),
-        appBarTheme: const AppBarTheme(
+        appBarTheme: AppBarTheme(
           backgroundColor: Color(0xFF1E1E1E),
           foregroundColor: Colors.white,
           elevation: 0,
           centerTitle: true,
           titleTextStyle: TextStyle(
-            color: Colors.white,
+            color: AppColors.appBarText,
             fontSize: 20,
             fontWeight: FontWeight.bold,
           ),

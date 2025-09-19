@@ -111,7 +111,7 @@ class RecipeController extends GetxController {
       final currentLanguage = RootController.to.currentLanguage;
 
       // Use demo service for testing (no API key required)
-      final newRecipes = await _demoService.getRecipes(
+      final newRecipes = await _recipeService.getRecipes(
         ingredients,
         filter:
             selectedFilter.value.isNotEmpty

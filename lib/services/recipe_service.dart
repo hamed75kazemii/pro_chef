@@ -1,20 +1,23 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import '../models/recipe.dart';
+import '../constants/app_config.dart';
 
 class RecipeService {
-  // You'll need to replace this with your actual API key
-  static const String _apiKey = 'YOUR_OPENAI_API_KEY';
-  static const String _baseUrl = 'https://api.openai.com/v1/chat/completions';
+  // API configuration from AppConfig
+  static final String _apiKey = AppConfig.liaraApiKey;
+  static const String _baseUrl = AppConfig.liaraBaseUrl;
 
   Future<List<Recipe>> getRecipes(
     List<String> ingredients, {
     String? filter,
+    String language = 'en',
   }) async {
     try {
       final prompt = _buildPrompt(ingredients, filter);
-
+      print("API KEY: $_apiKey");
       final response = await http.post(
         Uri.parse(_baseUrl),
         headers: {
@@ -22,19 +25,25 @@ class RecipeService {
           'Authorization': 'Bearer $_apiKey',
         },
         body: jsonEncode({
-          'model': 'gpt-3.5-turbo',
+          'model': AppConfig.liaraModel,
           'messages': [
             {
               'role': 'system',
               'content':
-                  'You are a helpful cooking assistant. Always respond with valid JSON format.',
+                  'You are a helpful and concise cooking assistant. Always respond ONLY with valid JSON, no explanations or extra text. The JSON must be an array of recipes as described.',
             },
-            {'role': 'user', 'content': prompt},
+            {
+              'role': 'user',
+              'content': '''
+$prompt
+Please write your answer ONLY as a JSON array of 3 recipes, each with "name", "description", and "steps" fields. Do not include any text before or after the JSON. All output must be in $language.
+''',
+            },
           ],
           'temperature': 0.7,
         }),
       );
-
+      log(response.body);
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);
         final content = data['choices'][0]['message']['content'];

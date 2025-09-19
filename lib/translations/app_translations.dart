@@ -6,6 +6,7 @@ class AppTranslations extends Translations {
     'en': {
       // App
       'app_title': 'Pro Chef - AI Recipe Generator',
+      'app_name': 'Pro Chef',
 
       // Home Screen
       'what_ingredients_have': 'What ingredients do you have?',
@@ -144,7 +145,7 @@ class AppTranslations extends Translations {
           'Discover delicious recipes that fit your busy lifestyle',
 
       // What to Cook Feature
-      'what_to_cook': 'What to Cook',
+      'what_to_cook': 'What to Cook?',
       'what_to_cook_description': 'Discover amazing Iranian recipes',
       'processing_recipes': 'Processing Recipes...',
       'chef_cooking': 'Chef is cooking for you',
@@ -156,11 +157,13 @@ class AppTranslations extends Translations {
       'food_type_label': 'Food Type',
       'ingredients_label': 'Ingredients',
       'instructions_label': 'Instructions',
+      'simple': 'Simple',
+      'available_ingredients_badge': 'Available',
     },
     'fa': {
       // App
-      'app_title': 'پرو شیف - تولید کننده دستور پخت هوشمند',
-
+      'app_title': 'هوش پز - تولید کننده دستور پخت هوشمند',
+      'app_name': 'هوش پز',
       // Home Screen
       'what_ingredients_have': 'چه مواد اولیه‌ای دارید؟',
       'enter_ingredients_description':
@@ -303,7 +306,7 @@ class AppTranslations extends Translations {
           'دستور پخت‌های خوشمزه‌ای را کشف کنید که با شما سازگار باشد',
 
       // What to Cook Feature
-      'what_to_cook': 'چی بپزم',
+      'what_to_cook': 'چی بپزم؟',
       'what_to_cook_description': 'دستور پخت‌های شگفت‌انگیز ایرانی را کشف کنید',
       'processing_recipes': 'در حال پردازش دستور پخت‌ها...',
       'chef_cooking': 'آشپز در حال پخت برای شماست',
@@ -315,6 +318,8 @@ class AppTranslations extends Translations {
       'food_type_label': 'نوع غذا',
       'ingredients_label': 'مواد اولیه',
       'instructions_label': 'دستورالعمل',
+      'simple': 'ساده',
+      'available_ingredients_badge': 'مواد موجود',
     },
   };
 }

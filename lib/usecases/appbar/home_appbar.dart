@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pro_chef/constants/app_images.dart';
 import 'package:pro_chef/constants/app_text_theme.dart';
-import 'package:pro_chef/constants/screen_utills.dart';
 import 'package:pro_chef/screens/saved_recipes_screen.dart';
 import 'package:pro_chef/screens/settings_screen.dart';
 
@@ -16,7 +15,7 @@ class HomeAppbar extends StatelessWidget {
         SizedBox(width: 50, height: 50, child: AppImages.logo),
         const SizedBox(width: 5),
         Text(
-          'Pro Chef',
+          'app_name'.tr,
           style: AppTextTheme.titleLarge.copyWith(
             color: Colors.white,
             fontWeight: FontWeight.bold,

@@ -238,9 +238,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                 contentPadding: const EdgeInsets.all(16),
                               ),
                               maxLines: 4,
-                              style: AppTextTheme.bodyMedium.copyWith(
-                                color: AppColors.textPrimary,
-                              ),
+                              // style: AppTextTheme.bodyMedium.copyWith(
+                              //   color: AppColors.textPrimary,
+                              // ),
                               onChanged: (_) => controller.clearError(),
                             ),
                           ),

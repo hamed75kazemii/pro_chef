@@ -273,7 +273,7 @@ class _WhatToCookScreenState extends State<WhatToCookScreen> {
                         borderRadius: BorderRadius.circular(8),
                       ),
                       child: Text(
-                        'ساده',
+                        'simple'.tr,
                         style: AppTextTheme.bodySmall.copyWith(
                           color: AppColors.warmOrange,
                           fontWeight: FontWeight.w500,
@@ -291,7 +291,7 @@ class _WhatToCookScreenState extends State<WhatToCookScreen> {
                         borderRadius: BorderRadius.circular(8),
                       ),
                       child: Text(
-                        'مواد موجود',
+                        'available_ingredients_badge'.tr,
                         style: AppTextTheme.bodySmall.copyWith(
                           color: AppColors.mintGreen,
                           fontWeight: FontWeight.w500,

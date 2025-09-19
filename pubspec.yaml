@@ -58,6 +58,9 @@ dependencies:
   # Share functionality
   share_plus: ^7.2.1
 
+  # Environment variables support
+  flutter_dotenv: ^5.1.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -86,6 +89,7 @@ flutter:
   assets:
     - assets/icon/
     - assets/iranian_recipes.json
+    - .env.example
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
